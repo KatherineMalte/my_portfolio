@@ -1,0 +1,44 @@
+<nav class="navbar">
+  <div class="left">
+    <!-- Logo -->
+     
+    <img src="assets/images/iconoDiama.png" class="logo" alt="Logo" (click)="onNavClick('home')" routerLink="/home" >
+
+    <!-- BOTÓN MENU -->
+    <span class="menu-text" (click)="toggleMenu()">
+      {{ menuOpen ? 'CLOSE' : 'MENU' }}
+    </span>
+  </div>
+
+  <a class="hire-me" href="katherinemalte73@gmail.com" target="_blank">
+    HIRE ME
+  </a>
+  
+  <!-- OVERLAY que ocupa TODO el panel gris -->
+<div class="overlay-container" [class.open]="menuOpen">
+
+<div class="overlay">
+  <!-- ICONOS ARRIBA A LA IZQUIERDA (HORIZONTAL) -->
+  <div class="social-row">
+    <a href="https://instagram.com/tuusuario" target="_blank">
+      <img src="assets/svg/instagram.svg" class="icon social-anim">
+    </a>
+
+    <a href="https://github.com/KatherineMalte" target="_blank">
+      <img src="assets/svg/github.svg" class="icon social-anim">
+    </a>
+
+    <a href="https://www.linkedin.com/in/katherine-m-40a5461ba/">
+      <img src="assets/svg/linkedin.svg" class="icon social-anim">
+    </a>
+  </div>
+
+  <!-- MENÚ PRINCIPAL ABAJO (COLUMNA) -->
+  <div class="menu-links social-anim">
+    <a routerLink="/home" (click)="onNavClick('home')">Home</a>
+    <a routerLink="/work" (click)="onNavClick('work')">Work</a>
+    <a routerLink="/about" (click)="onNavClick('about')">About</a>
+  </div>
+</div>
+</div>
+</nav>

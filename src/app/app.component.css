@@ -1,0 +1,65 @@
+.panel {
+  position: relative;
+  background-color: #fff0ff;
+  width: 96%;
+  height: 96%;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.overlay-container.open {
+  top: 0; /* se desliza hacia abajo */
+}
+
+.overlay-container {
+  position: absolute;       /* relativo al panel gris */
+  top: -100%;               /* fuera del panel al inicio */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(154, 64, 182);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: top 0.5s ease;
+  z-index: 1;
+}
+
+/* Temas - colores suaves (pastel) */
+.theme-home { background: #fff0ff; }   /* lila pastel */
+.theme-work { background: #d8f8e1; }   /* verde pastel */
+.theme-about{ background: #f3f3f3; }   /* gris pastel */
+
+/* Overlay de transición: siempre dentro del panel */
+.transition-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--transition-color, transparent);
+  opacity: 0;
+  transform: translateY(-100%); /* estado inicial: arriba (dentro del panel) */
+  transition: transform 0.45s cubic-bezier(.22,.9,.37,1), opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 50; /* por debajo del navbar si navbar tiene z-index mayor */
+}
+
+/* baja (cubre el panel) */
+.transition-overlay.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* sube fuera (sale hacia abajo y desaparece) */
+.transition-overlay.leave {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* Si tu navbar debe quedar encima del overlay, dale mayor z-index */
+app-navbar { z-index: 100; position: relative; }
