@@ -19,9 +19,9 @@ export class AppComponent {
 
   // Colores de transición temporales
   transitionColors: Record<string, string> = {
-    home:  '#ffb7ffde',
-    work:  '#57f826ff',
-    about: '#c9d612ea'
+    home:  '#C47BE4',
+    work:  '#F5C857',
+    about: '#C1E59F'
   };
 
   // Colores pastel permanentes
