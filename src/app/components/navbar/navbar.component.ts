@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -8,16 +9,20 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class Navbar {
-  menuOpen = false;
-  @Output() themeChange = new EventEmitter<string>(); // emitirá 'home' | 'work' | 'about'
-  @Output() toggleMenuEvent = new EventEmitter<boolean>();
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-    this.toggleMenuEvent.emit(this.menuOpen);
+  @Input() menuOpen = false;       
+  @Output() themeChange = new EventEmitter<string>();      // 'home' | 'work' | 'about'
+  @Output() toggleMenuEvent = new EventEmitter<boolean>(); // true/false
+
+  // 🔵 Se usa para cambiar la sección activa y cerrar menú
+  nav(section: string) {
+    this.themeChange.emit(section);   // Notifica al padre -> cambia color/tema
+    this.toggleMenuEvent.emit(false); // Fuerza cerrar menú
   }
-  onNavClick(colorKey: string) {
-    this.themeChange.emit(colorKey);
-    this.toggleMenu(); // cierra menú si quieres
+
+  // 🔵 Botón MENU / CLOSE
+  toggleMenu() {
+    const newState = !this.menuOpen;
+    this.toggleMenuEvent.emit(newState);
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, Router, NavigationStart, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Navbar } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 
@@ -12,63 +12,55 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
 
-  title = 'Mi Portafolio';
-  panelThemeClass = '';
-  menuOpen: boolean = false;
+  panelThemeClass = 'theme-home';
+  menuOpen = false;
+  showOverlay = false;
+  isTransitioning = false;
 
-  isTransitioning = false; 
-  isLeaving = false;
+  // Colores de transición temporales
+  transitionColors: Record<string, string> = {
+    home:  '#ffb7ffde',
+    work:  '#57f826ff',
+    about: '#c9d612ea'
+  };
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
-        this.triggerTransition();   // ← aquí activamos la animación
-      }
-    });
-  }
-
-  // ⭐ Animación de transición completa (baja → sube → limpia)
-  triggerTransition() {
-
-    this.isLeaving = false;
-    this.isTransitioning = true;  // baja el panel
-
-    setTimeout(() => {
-      this.isLeaving = true;      // sube el panel
-    }, 300);
-
-    setTimeout(() => {
-      this.isTransitioning = false;
-      this.isLeaving = false;     // lo deja reset
-    }, 600);
-  }
-
-  // ⭐ Cambia colores y temas del panel
- onThemeChange(key: string) {
-  const map: Record<string,string> = {
+  // Colores pastel permanentes
+  themeClasses: Record<string, string> = {
     home: 'theme-home',
     work: 'theme-work',
     about: 'theme-about'
   };
 
-  const colorMap: Record<string,string> = {
-    home: '#3498db',
-    work: '#e67e22',
-    about: '#b300ffff'
-  };
+  // ← EVENTO del navbar
+  requestThemeChange(key: string) {
 
-  // Cambia SOLO el color del overlay (inmediato)
-  document.documentElement.style.setProperty(
-    '--transition-color',
-    colorMap[key] ?? '#ff3d3d'
-  );
+    // 1. Pasar color pastel al fondo permanente
+    this.panelThemeClass = this.themeClasses[key] ?? 'theme-home';
 
-  // ❗ Espera a que la animación termine
+    // 2. Pasar color temporal a la variable CSS
+    const color = this.transitionColors[key] ?? '#00000040';
+    document.documentElement.style.setProperty('--transition-color', color);
+  }
+
+  // ← ACTIVADO cuando se abre un componente por router
+ startTransition() {
+  this.showOverlay = true;
+  this.isTransitioning = true;
+
   setTimeout(() => {
-    this.panelThemeClass = map[key] ?? '';
-  }, 600); // coincide con triggerTransition()
+    this.isTransitioning = false;
+
+    // Desaparece el overlay
+    setTimeout(() => {
+      this.showOverlay = false;
+
+      // 🧹 LIMPIA el color de transición (IMPORTANTE)
+      document.documentElement.style.removeProperty('--transition-color');
+
+    }, 400);
+
+  }, 400);
 }
+
 
 }

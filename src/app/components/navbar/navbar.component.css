@@ -7,7 +7,7 @@
   align-items: center;
   padding: 15px 30px;
   position: relative;
-   z-index: 10;
+   z-index: 10000;
   /* navbar siempre encima del overlay */
 }
 
@@ -73,10 +73,10 @@
 .overlay-container {
   position: absolute;
   left: 0;
-  height: calc(100% - 80px);
-  display: none;
-
+  height: calc(100% - 90px);
+  
   background: rgb(154, 64, 182);
+  display: none;
   pointer-events: none; /* evita bloquear navbar cuando está cerrado */
 }
 

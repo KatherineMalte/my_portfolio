@@ -1,14 +1,17 @@
 <div class="panel" [ngClass]="panelThemeClass">
-  <app-navbar
-    (themeChange)="onThemeChange($event)"
-    (toggleMenuEvent)="menuOpen = $event"
-  ></app-navbar>
+  <app-navbar (themeChange)="requestThemeChange($event)" (toggleMenuEvent)="menuOpen = $event"
+    [menuOpen]="menuOpen" ></app-navbar>
 
   <div class="overlay-container" [class.open]="menuOpen"></div>
 
-  <div class="transition-overlay" [class.active]="isTransitioning" [class.leave]="isLeaving"></div>
+  <div 
+    *ngIf="showOverlay"
+    class="transition-overlay"
+    [class.active]="isTransitioning">
+  </div>
 
   <div class="content">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="startTransition()"></router-outlet>
   </div>
+
 </div>
