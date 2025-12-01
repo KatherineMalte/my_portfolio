@@ -1,15 +1,23 @@
 <div class="panel" [ngClass]="panelThemeClass">
-  <app-navbar (themeChange)="requestThemeChange($event)" (toggleMenuEvent)="menuOpen = $event"
-    [menuOpen]="menuOpen" ></app-navbar>
 
+  <!-- Navbar -->
+  <app-navbar 
+    (themeChange)="requestThemeChange($event)" 
+    (toggleMenuEvent)="menuOpen = $event"
+    [menuOpen]="menuOpen">
+  </app-navbar>
+
+  <!-- Panel gris / menú -->
   <div class="overlay-container" [class.open]="menuOpen"></div>
 
-  <div 
-    *ngIf="showOverlay"
-    class="transition-overlay"
-    [class.active]="isTransitioning">
+  <!-- Overlay de transición -->
+  <div #transitionOverlay 
+       class="transition-overlay"
+       [class.active]="isTransitioning"
+       [class.fading-out]="isFadingOut">
   </div>
 
+  <!-- Contenido del router -->
   <div class="content">
     <router-outlet (activate)="startTransition()"></router-outlet>
   </div>

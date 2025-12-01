@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Navbar } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,7 @@ export class AppComponent {
   menuOpen = false;
   showOverlay = false;
   isTransitioning = false;
-
+  isFadingOut = false;
   // Colores de transición temporales
   transitionColors: Record<string, string> = {
     home:  '#C47BE4',
@@ -30,7 +30,7 @@ export class AppComponent {
     work: 'theme-work',
     about: 'theme-about'
   };
-
+@ViewChild('transitionOverlay', { static: true }) transitionOverlay!: ElementRef<HTMLDivElement>;
   // ← EVENTO del navbar
   requestThemeChange(key: string) {
 
@@ -38,29 +38,24 @@ export class AppComponent {
     this.panelThemeClass = this.themeClasses[key] ?? 'theme-home';
 
     // 2. Pasar color temporal a la variable CSS
-    const color = this.transitionColors[key] ?? '#00000040';
+    const color = this.transitionColors[key] ?? 'rgba(0,0,0,0.2)';
     document.documentElement.style.setProperty('--transition-color', color);
   }
 
   // ← ACTIVADO cuando se abre un componente por router
- startTransition() {
-  this.showOverlay = true;
-  this.isTransitioning = true;
+  startTransition() {
+    this.isTransitioning = true;
 
-  setTimeout(() => {
-    this.isTransitioning = false;
-
-    // Desaparece el overlay
+    // Espera el tiempo de bajada del overlay
     setTimeout(() => {
-      this.showOverlay = false;
+      this.isTransitioning = false;
+      this.isFadingOut = true;
 
-      // 🧹 LIMPIA el color de transición (IMPORTANTE)
-      document.documentElement.style.removeProperty('--transition-color');
-
-    }, 400);
-
-  }, 400);
-}
-
-
+      // Espera el fade-out para destruir el overlay
+      setTimeout(() => {
+        this.isFadingOut = false;
+        document.documentElement.style.removeProperty('--transition-color');
+      }, 400); // duración del fade-out
+    }, 400); // duración del descenso
+  }
 }

@@ -1,5 +1,6 @@
+
 .panel {
-   position: relative;
+  position: relative;
   width: 96%;
   height: 96%;
   margin: auto;
@@ -8,6 +9,7 @@
   flex-direction: column;
   overflow: hidden;
   background-color: transparent;
+  transition: background 0.35s ease;
 }
 .overlay-container.open {
   top: 0; /* se desliza hacia abajo */
@@ -24,39 +26,36 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: top 0.5s ease;
+  transition: top 0.1s ease;
   z-index: 1;
 }
+
 
 /* Fondos pastel permanentes */
 .theme-home { background: #fff0ff; }  /* lila pastel */
 .theme-work { background: rgba(247, 229, 192, 0.906); }  /* naranja */
 .theme-about { background: #edf8c3; } /* verde pastel */
 
+/* Overlay temporal */
 .transition-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--transition-color, transparent);
-  transition: top 0.4s ease, opacity 0.4s ease;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.transition-overlay.active {
-  top: 0;
+  inset: 0;
+  background-color: var(--transition-color, transparent);
+  transform: translateY(-100%);
   opacity: 1;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 9999;
+  pointer-events: none;
 }
 
-.transition-overlay:not(.active) {
-  top: -100%;
+/* Baja desde arriba */
+.transition-overlay.active {
+  transform: translateY(0);
+}
+
+/* Desaparece hacia abajo */
+.transition-overlay.fading-out {
+  transform: translateY(100%);
   opacity: 0;
 }
-
-
-
-
 
