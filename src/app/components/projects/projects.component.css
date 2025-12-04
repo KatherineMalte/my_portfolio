@@ -1,0 +1,8 @@
+.about-title::after {
+  content: "";
+  display: block;
+  width: 80px;             /* largo de la línea */
+  height: 4px;             /* grosor */
+  background-color: #C39B4E;
+  margin-top: 12px;        /* distancia del texto */
+}

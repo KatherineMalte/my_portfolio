@@ -1,8 +1,10 @@
 
 .panel {
   position: relative;
-  width: 96%;
+  width: 99%;
   height: 96%;
+  min-height: 100vh; /* ocupar toda la altura de la pantalla */
+  margin: 0 auto;    /* centrado horizontal */
   margin: auto;
   border-radius: 6px;
   display: flex;
@@ -10,6 +12,24 @@
   overflow: hidden;
   background-color: transparent;
   transition: background 0.35s ease;
+}
+.content {
+  padding: 80px;
+}
+
+/* Contenido de cada sección */
+.section {
+  max-width: 900px;
+  margin: 60px auto; /* espacio superior e inferior para cada componente */
+}
+
+/* Ejemplo de párrafos alternados izquierda/derecha */
+.section p:nth-child(odd) {
+  text-align: left;
+}
+
+.section p:nth-child(even) {
+  text-align: right;
 }
 .overlay-container.open {
   top: 0; /* se desliza hacia abajo */
@@ -21,7 +41,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(154, 64, 182);
+  background-color: var(--overlay-color,rgb(154, 64, 182));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,8 +49,13 @@
   transition: top 0.1s ease;
   z-index: 1;
 }
-
-
+.overlay-container.open {
+  top: 0;transition: top 0.7s ease;
+}
+.overlay-container.closing {
+  top: -100%;
+  transition: top 0.1s ease;  /* sube rápido */
+}
 /* Fondos pastel permanentes */
 .theme-home { background: #fff0ff; }  /* lila pastel */
 .theme-work { background: rgba(247, 229, 192, 0.906); }  /* naranja */
@@ -46,6 +71,9 @@
   transition: transform 0.4s ease, opacity 0.4s ease;
   z-index: 9999;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Baja desde arriba */
