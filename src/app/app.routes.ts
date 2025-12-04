@@ -8,5 +8,6 @@ export const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'about', component: About},
   { path: 'projects', component: Projects},
-  { path: '**', redirectTo: '' } // cualquier ruta desconocida redirige a Home
+  // {path: 'loading', component: Loading},
+  { path: '**', redirectTo: 'home' } // cualquier ruta desconocida redirige a Home
 ];

@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 15px 40px;
   position: relative;
    z-index: 10000;
   /* navbar siempre encima del overlay */
@@ -31,6 +31,7 @@
 /* “MENU” Y “HIRE ME” */
 .menu-text,
 .hire-me {
+  font-family: "Lucida Console", "Courier New", monospace;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -48,6 +49,18 @@
 
 .menu-text.open-animation {
   animation: pop 0.2s forwards;
+}
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+}
+.menu-links li {
+  display: flex;
+  align-items: center;
+  gap: 42px; /* separación entre el link y la descripción */
+  margin: 8px 0;
 }
 
 /* Animación de rebote */
@@ -106,7 +119,9 @@ background: transparent !important;
 .social-row {
   display: flex;
   gap: 25px;
-  margin-top: 1%;
+  margin-top: 4%;
+  margin-top: -50px; 
+  margin-bottom: 30px;
 }
 
 .icon {

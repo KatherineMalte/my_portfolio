@@ -5,7 +5,7 @@
     <a routerLink="/home" (click)="nav('home')">
       <img src="assets/images/iconoDiama.png" class="logo" alt="Logo">
     </a>
-
+  <div class="navbar-divider"></div>
     <!-- BOTÓN MENU -->
     <span class="menu-text" (click)="toggleMenu()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
@@ -23,7 +23,7 @@
 
       <!-- ICONOS -->
       <div class="social-row">
-        <a href="https://instagram.com/tuusuario" target="_blank">
+        <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank">
           <img src="assets/svg/instagram.svg" class="icon social-anim">
         </a>
 
@@ -38,9 +38,9 @@
 
       <!-- LINKS DEL MENÚ -->
       <div class="menu-links social-anim">
-        <a routerLink="/home"  (click)="nav('home')">Home</a>
-        <a routerLink="/projects"  (click)="nav('work')">Work</a>
-        <a routerLink="/about" (click)="nav('about')">About</a>
+        <li><a routerLink="/home" (click)="nav('home')">Home</a><span class="menu-desc">Back to the home page.</span></li>
+        <li><a routerLink="/projects"  (click)="nav('work')">Work</a><span>My approach to development.</span></li>
+        <li><a routerLink="/about" (click)="nav('about')">About</a><span> A little about me and my background.</span></li> 
       </div>
 
     </div>

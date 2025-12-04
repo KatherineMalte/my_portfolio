@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+
+
+
+
+
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Times New Roman", Times, serif,'Poppins', sans-serif;
 }
 h1, h2, h3 {
   font-weight: 700;
@@ -8,4 +14,18 @@ h1, h2, h3 {
 
 p, a, li {
   font-weight: 400;
+}
+
+.navbar {
+  font-family: "Lucida Console", "Courier New", monospace; /* o la que quieras */
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.navbar-divider {
+  width: 1px;
+  height: 30px;
+  background-color: #3b3a38; /* tu dorado café */
+  margin: 0 20px;
+  opacity: 0.6; /* más elegante */
 }

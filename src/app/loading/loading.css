@@ -1,0 +1,30 @@
+.dots-loader {
+  display: flex;
+  gap: 8px;z-index: 20000;
+}
+
+.dots-loader div {
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+  
+}
+
+.dots-loader div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dots-loader div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
