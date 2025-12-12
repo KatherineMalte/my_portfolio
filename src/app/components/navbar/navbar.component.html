@@ -2,24 +2,25 @@
   <div class="left">
 
     <!-- LOGO -->
-    <a routerLink="/home" (click)="nav('home')">
+    <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
       <img src="assets/images/iconoDiama.png" class="logo" alt="Logo">
     </a>
-  <div class="navbar-divider"></div>
+    <div class="navbar-divider"></div>
     <!-- BOTÓN MENU -->
-    <span class="menu-text" (click)="toggleMenu()">
+    <span class="menu-text" (click)="toggleMenu(); $event.stopPropagation()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
     </span>
   </div>
 
+  <!-- BOTÓN HIRE ME -->
   <a class="hire-me" href="mailto:katherinemalte73@gmail.com" target="_blank">
     HIRE ME
   </a>
 
-  <!-- OVERLAY COMPLETO -->
-  <div class="overlay-container" [class.open]="menuOpen">
+  <!-- OVERLAY DEL MENÚ -->
+  <div class="overlay-container" [class.open]="menuOpen" (click)="$event.stopPropagation()">
 
-    <div class="overlay">
+    <div class="overlay" [class.open]="isOpen" [class.animating]="isAnimating">
 
       <!-- ICONOS -->
       <div class="social-row">
@@ -31,17 +32,34 @@
           <img src="assets/svg/github.svg" class="icon social-anim">
         </a>
 
-        <a href="https://www.linkedin.com/in/katherine-m-40a5461ba/">
+        <a href="https://www.linkedin.com/in/katherine-m-40a5461ba/" target="_blank">
           <img src="assets/svg/linkedin.svg" class="icon social-anim">
         </a>
       </div>
 
       <!-- LINKS DEL MENÚ -->
-      <div class="menu-links social-anim">
-        <li><a routerLink="/home" (click)="nav('home')">Home</a><span class="menu-desc">Back to the home page.</span></li>
-        <li><a routerLink="/projects"  (click)="nav('work')">Work</a><span>My approach to development.</span></li>
-        <li><a routerLink="/about" (click)="nav('about')">About</a><span> A little about me and my background.</span></li> 
-      </div>
+      <ul class="menu-links social-anim">
+        <li>
+          <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
+            Home
+          </a>
+          <span class="menu-desc">Back to the home page.</span>
+        </li>
+
+        <li>
+          <a routerLink="/projects" (click)="onMenuLinkClick('work', $event)">
+            Work
+          </a>
+          <span>My approach to development.</span>
+        </li>
+
+        <li>
+          <a routerLink="/about" (click)="onMenuLinkClick('about', $event)">
+            About
+          </a>
+          <span>A little about me and my background.</span>
+        </li>
+      </ul>
 
     </div>
   </div>

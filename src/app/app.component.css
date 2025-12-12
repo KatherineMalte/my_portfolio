@@ -1,65 +1,55 @@
-
 .panel {
   position: relative;
   width: 99%;
-  height: 96%;
-  min-height: 100vh; /* ocupar toda la altura de la pantalla */
-  margin: 0 auto;    /* centrado horizontal */
-  margin: auto;
-  border-radius: 6px;
+  height: 98%;
+  min-height: 100vh;
+  /* ocupar toda la altura de la pantalla */
+  margin: 0 auto;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background-color: transparent;
   transition: background 0.35s ease;
 }
+
+/*margen a los comp*/
 .content {
   padding: 80px;
 }
 
-/* Contenido de cada sección */
-.section {
-  max-width: 900px;
-  margin: 60px auto; /* espacio superior e inferior para cada componente */
-}
-
-/* Ejemplo de párrafos alternados izquierda/derecha */
-.section p:nth-child(odd) {
-  text-align: left;
-}
-
-.section p:nth-child(even) {
-  text-align: right;
-}
 .overlay-container.open {
+  transition: top 0.6s ease;/*tiempo de menu*/
   top: 0; /* se desliza hacia abajo */
 }
-
 .overlay-container {
-  position: absolute;       /* relativo al panel gris */
-  top: -100%;               /* fuera del panel al inicio */
+  position: absolute;
+  /* relativo al panel gris */
+  top: -100%;
+  /* fuera del panel al inicio */
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--overlay-color,rgb(154, 64, 182));
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: top 0.1s ease;
-  z-index: 1;
+  /*transicion de los transicion*/
+  z-index: 0;
 }
 .overlay-container.open {
   top: 0;transition: top 0.7s ease;
 }
 .overlay-container.closing {
-  top: -100%;
-  transition: top 0.1s ease;  /* sube rápido */
+  transition: top 0.1s ease;
+  /* sube rápido */
 }
 /* Fondos pastel permanentes */
-.theme-home { background: #fff0ff; }  /* lila pastel */
-.theme-work { background: rgba(247, 229, 192, 0.906); }  /* naranja */
-.theme-about { background: #edf8c3; } /* verde pastel */
+.theme-home { background: #fff0ff;}
+
+.theme-work { background: rgba(247, 229, 192, 0.906); }
+
+.theme-about { background: #edf8c3; }
 
 /* Overlay temporal */
 .transition-overlay {
@@ -86,4 +76,10 @@
   transform: translateY(100%);
   opacity: 0;
 }
-
+.transition-overlay.isLoading {
+  opacity: 0;
+  transition: opacity var(--transition-color) ease;
+}
+:root {
+  --transition-color: 0.2s; /* mismo tiempo para overlay y loading */
+}

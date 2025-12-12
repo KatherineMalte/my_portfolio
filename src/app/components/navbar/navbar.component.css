@@ -101,16 +101,28 @@
 
 /* CONTENIDO DEL OVERLAY */
 .overlay {
-  width: 100%;
+ width: 100%;
   margin-top: 80px;              /* deja el navbar visible */
   height: calc(100% - 80px);     /* ocupa solo el espacio de abajo */
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-background: transparent !important;
+  background: transparent !important;
   padding: 40px;
   color: white;
+}
+/* cuando se abre */
+.overlay.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* durante animación */
+.overlay.animating {
+  transition:
+    transform 0.6s ease,
+    opacity 0.3s ease;
 }
 
 /* ---------------------------------------------------

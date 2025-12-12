@@ -1,25 +1,26 @@
-<div class="panel" [ngClass]="panelThemeClass">
-
+<div 
+class="panel"
+[ngClass]="panelThemeClass">
+<app-intro-overlay></app-intro-overlay>
   <!-- Navbar -->
   <app-navbar 
-    (themeChange)="requestThemeChange($event)" 
-    (toggleMenuEvent)="menuOpen = $event"
-    [menuOpen]="menuOpen">
+    [menuOpen]="menuOpen"
+    (menuAction)="handleMenuAction($event)"
+    >
   </app-navbar>
 
   <!-- Panel gris / menú -->
-  <div class="overlay-container" [class.open]="menuOpen"></div>
+  <div class="overlay-container" 
+   [style.background-color]="color || null"
+   [class.open]="menuOpen">
+  </div>
 
   <!-- Overlay de transición -->
   <div 
-    #transitionOverlay
-    class="transition-overlay"
-    [class.active]="isTransitioning"
-    [class.fading-out]="isFadingOut">
-
-    <!-- Loader de punticos SIEMPRE va aquí -->
-    <app-loading *ngIf="isLoading"></app-loading>
-
+  class="transition-overlay" 
+  [class.active]="isTransitioning" 
+  [class.fading-out]="isFadingOut">
+  <!-- <app-loading *ngIf="isLoading"></app-loading> -->
   </div>
 
   <!-- Contenido de la app -->

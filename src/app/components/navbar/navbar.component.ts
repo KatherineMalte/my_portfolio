@@ -10,19 +10,45 @@ import { RouterLink } from '@angular/router';
 })
 export class Navbar {
 
-  @Input() menuOpen = false;       
-  @Output() themeChange = new EventEmitter<string>();      // 'home' | 'work' | 'about'
-  @Output() toggleMenuEvent = new EventEmitter<boolean>(); // true/false
+  @Input() menuOpen = false;
+  @Output() menuAction = new EventEmitter<{ section?: string, open: boolean }>();
 
-  // 🔵 Se usa para cambiar la sección activa y cerrar menú
+  // controla solo el overlay del menú (no la transición global)
+  isOpen = false;
+  isAnimating = false;
+
+  constructor() { }
+
+  // ----------------------------------------------------
+  // CLICK EN CUALQUIER LINK DEL NAVBAR
+  // ----------------------------------------------------
   nav(section: string) {
-    this.themeChange.emit(section);   // Notifica al padre -> cambia color/tema
-    this.toggleMenuEvent.emit(false); // Fuerza cerrar menú
+    // El navbar solo emite el evento.
+    // El AppComponent se encarga del color, transición y navegación.
+    this.menuAction.emit({ section, open: false });
   }
 
-  // 🔵 Botón MENU / CLOSE
+  onMenuLinkClick(section: string, event: Event) {
+    event.stopPropagation();
+    this.nav(section);
+  }
+
+  // ----------------------------------------------------
+  // ANIMACIÓN DEL MENÚ HAMBURGUESA
+  // ----------------------------------------------------
   toggleMenu() {
-    const newState = !this.menuOpen;
-    this.toggleMenuEvent.emit(newState);
+    this.menuAction.emit({ open: !this.menuOpen });  // actualiza estado fuera
+
+    this.isAnimating = true;
+
+    if (!this.isOpen) {
+      requestAnimationFrame(() => this.isOpen = true);
+    } else {
+      this.isOpen = false;
+    }
+
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 600); // tiempo igual al CSS
   }
 }
