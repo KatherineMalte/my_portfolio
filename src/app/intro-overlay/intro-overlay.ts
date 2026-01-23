@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class IntroOverlay {
 
-  introActive = false;
   introFadeOut = false;
   private alreadyStarted = false;
 
@@ -18,27 +17,29 @@ export class IntroOverlay {
     queueMicrotask(() => this.startTransitionIntro());
   }
 
-  startTransitionIntro() {
+startTransitionIntro() {
+  if (this.alreadyStarted) return;
+  this.alreadyStarted = true;
 
-    if (this.alreadyStarted) return;
-    this.alreadyStarted = true;
+  // 1️⃣ Color inicial
+  document.documentElement.style.setProperty('--home-color', '#E9D3F2');
 
-    // ESTABLECER EL COLOR DESDE TS
-    document.documentElement.style.setProperty('--home-color', '#f305f3');
+  // 2️⃣ Espera 2 segundos quieto
+  setTimeout(() => {
 
-    this.introActive = true;
+    // Forzar recalc. de estilo antes de activar transición
+    requestAnimationFrame(() => {
+      this.introFadeOut = true; // activa animación CSS
+    });
 
+    // 3️⃣ Limpieza al final de la animación (igual duración que CSS)
     setTimeout(() => {
-      this.introActive = false;
-      this.introFadeOut = true;
+      this.introFadeOut = false;
+      document.documentElement.style.removeProperty('--home-color');
+    }, 800); // misma duración que CSS
 
-      setTimeout(() => {
-        this.introFadeOut = false;
+  }, 800);
+}
 
-        // ELIMINAR EL COLOR DESPUÉS DE LA ANIMACIÓN
-        document.documentElement.style.removeProperty('--home-color');
-      }, 800);
 
-    }, 800);
-  }
 }
