@@ -7,7 +7,7 @@
   align-items: center;
   padding: 15px 40px;
   position: relative;
-   z-index: 10000;
+   z-index: 20;
   /* navbar siempre encima del overlay */
 }
 
@@ -16,7 +16,11 @@
   align-items: center;
   gap: 20px;
 }
-
+.left.hide-all{
+   opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 /* LOGO */
 .logo {
   width: 50px;
@@ -35,7 +39,12 @@
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
 }
-
+.menu-text.hide-all
+{
+opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
 .menu-text:hover,
 .hire-me:hover {
   transform: scale(1.2);
@@ -46,7 +55,9 @@
 .hire-me:active {
   transform: scale(1.2);
 }
-
+.hire-me.hide-all{  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;}
 .menu-text.open-animation {
   animation: pop 0.2s forwards;
 }
@@ -87,8 +98,6 @@
   position: absolute;
   left: 0;
   height: calc(100% - 90px);
-  
-  background: rgb(154, 64, 182);
   display: none;
   pointer-events: none; /* evita bloquear navbar cuando está cerrado */
 }
@@ -135,6 +144,9 @@
   margin-top: -50px; 
   margin-bottom: 30px;
 }
+.social-row.hide-all{ opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;}
 
 .icon {
   width: 30px;
@@ -203,3 +215,6 @@
   /* efecto sutil a la derecha */
   opacity: 0.7;
 }
+.hide-all{ opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;}

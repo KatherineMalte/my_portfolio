@@ -1,21 +1,21 @@
 <nav class="navbar">
-  <div class="left">
-
+  <div class="left" >
     <!-- LOGO -->
-    <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
+    <a (click)="onMenuLinkClick('home', $event)">
       <img src="assets/images/iconoDiama.png" class="logo" alt="Logo">
     </a>
     <div class="navbar-divider"></div>
     <!-- BOTÓN MENU -->
-    <span class="menu-text" (click)="toggleMenu(); $event.stopPropagation()">
+    <span class="menu-text"  [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
     </span>
-  </div>
-
-  <!-- BOTÓN HIRE ME -->
-  <a class="hire-me" href="mailto:katherinemalte73@gmail.com" target="_blank">
+     <!-- BOTÓN HIRE ME -->
+  <a class="hire-me" [class.hide-all]="hideMenuContent" href="mailto:katherinemalte73@gmail.com" target="_blank">
     HIRE ME
   </a>
+  </div>
+
+ 
 
   <!-- OVERLAY DEL MENÚ -->
   <div class="overlay-container" [class.open]="menuOpen" (click)="$event.stopPropagation()">
@@ -23,7 +23,7 @@
     <div class="overlay" [class.open]="isOpen" [class.animating]="isAnimating">
 
       <!-- ICONOS -->
-      <div class="social-row">
+      <div class="social-row" [class.hide-all]="hideMenuContent">
         <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank">
           <img src="assets/svg/instagram.svg" class="icon social-anim">
         </a>
@@ -40,27 +40,26 @@
       <!-- LINKS DEL MENÚ -->
       <ul class="menu-links social-anim">
         <li>
-          <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
+          <a (click)="onMenuLinkClick('home', $event)">
             Home
           </a>
           <span class="menu-desc">Back to the home page.</span>
         </li>
 
         <li>
-          <a routerLink="/projects" (click)="onMenuLinkClick('work', $event)">
+          <a (click)="onMenuLinkClick('work', $event)">
             Work
           </a>
           <span>My approach to development.</span>
         </li>
 
         <li>
-          <a routerLink="/about" (click)="onMenuLinkClick('about', $event)">
+          <a (click)="onMenuLinkClick('about', $event)">
             About
           </a>
           <span>A little about me and my background.</span>
         </li>
       </ul>
-
-    </div>
   </div>
+</div>
 </nav>

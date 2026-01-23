@@ -1,10 +1,10 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -12,12 +12,10 @@ export class Navbar {
 
   @Input() menuOpen = false;
   @Output() menuAction = new EventEmitter<{ section?: string, open: boolean }>();
-
-  // controla solo el overlay del menú (no la transición global)
+  @Input() isTransitioning: boolean = false;
+  @Input() hideMenuContent :boolean = false;
   isOpen = false;
-  isAnimating = false;
-
-  constructor() { }
+isAnimating = false;
 
   // ----------------------------------------------------
   // CLICK EN CUALQUIER LINK DEL NAVBAR
@@ -29,6 +27,7 @@ export class Navbar {
   }
 
   onMenuLinkClick(section: string, event: Event) {
+    event.preventDefault();      // 🔥 importante con routerLink
     event.stopPropagation();
     this.nav(section);
   }
@@ -38,7 +37,7 @@ export class Navbar {
   // ----------------------------------------------------
   toggleMenu() {
     this.menuAction.emit({ open: !this.menuOpen });  // actualiza estado fuera
-
+   
     this.isAnimating = true;
 
     if (!this.isOpen) {
