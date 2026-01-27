@@ -1,5 +1,13 @@
 <!-- Div que mantiene el color mientras dura la animación -->
 
 <!-- Overlay que se anima: fade de arriba hacia abajo -->
-<div class="intro-overlay"
- [attr.data-fadeout]="introFadeOut"></div>
+<div
+  class="intro-overlay"
+  [class.erase]="isErasing">
+  <div class="loader-wrapper" *ngIf="showLoader">
+    <app-loading></app-loading>
+  </div>
+</div>
+
+
+

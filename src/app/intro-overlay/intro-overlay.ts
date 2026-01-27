@@ -1,45 +1,41 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {Loading} from '../loading/loading';
 
 @Component({
   selector: 'app-intro-overlay',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,Loading],
   templateUrl: './intro-overlay.html',
   styleUrl: './intro-overlay.css',
 })
 export class IntroOverlay {
-
-  introFadeOut = false;
-  private alreadyStarted = false;
-
+   isErasing = false;
+  showLoader = true;
   ngAfterViewInit() {
-    queueMicrotask(() => this.startTransitionIntro());
+    this.startIntro();
   }
 
-startTransitionIntro() {
-  if (this.alreadyStarted) return;
-  this.alreadyStarted = true;
-
-  // 1️⃣ Color inicial
-  document.documentElement.style.setProperty('--home-color', '#E9D3F2');
-
-  // 2️⃣ Espera 2 segundos quieto
-  setTimeout(() => {
-
-    // Forzar recalc. de estilo antes de activar transición
+ startIntro() {
+    // 🎨 color definido desde TS
+    document.documentElement.style.setProperty(
+      '--intro-color',
+      '#E9D3F2'
+    );
+  this.showLoader = true;
+    // 🔥 forzar un frame para que el navegador
+    // registre el estado inicial (height: 100%)
     requestAnimationFrame(() => {
-      this.introFadeOut = true; // activa animación CSS
+      this.isErasing = true; // dispara transición CSS
     });
-
-    // 3️⃣ Limpieza al final de la animación (igual duración que CSS)
+ setTimeout(() => {
+      this.showLoader = false;
+    }, 2000);
+    // 🧹 limpieza opcional cuando TODO termina
+    // (2s delay + 8s animación = 10s)
     setTimeout(() => {
-      this.introFadeOut = false;
-      document.documentElement.style.removeProperty('--home-color');
-    }, 800); // misma duración que CSS
-
-  }, 800);
-}
-
+      document.documentElement.style.removeProperty('--intro-color');
+    }, 3000);
+  }  
 
 }
