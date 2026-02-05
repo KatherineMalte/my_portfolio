@@ -1,7 +1,11 @@
 <div 
 class="panel"
 [ngClass]="panelThemeClass">
-<app-intro-overlay></app-intro-overlay>
+<app-intro-overlay *ngIf="showIntro" [introColor]="color"
+ (finished)="showIntro = false">
+ 
+</app-intro-overlay>
+
   <!-- Navbar -->
   <app-navbar 
     [menuOpen]="menuOpen"
@@ -20,7 +24,6 @@ class="panel"
   class="transition-overlay" 
   [class.active]="isTransitioning" 
   [class.fading-out]="isFadingOut">
-  <!-- <app-loading *ngIf="isLoading"></app-loading> -->
   </div>
 
   <!-- Contenido de la app -->

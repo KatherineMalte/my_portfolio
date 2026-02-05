@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {Section } from '../../../../src/app/theme.config';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -11,22 +12,22 @@ import { CommonModule } from '@angular/common';
 export class Navbar {
 
   @Input() menuOpen = false;
-  @Output() menuAction = new EventEmitter<{ section?: string, open: boolean }>();
+  @Output() menuAction = new EventEmitter<{ section?: Section, open: boolean }>();
   @Input() isTransitioning: boolean = false;
   @Input() hideMenuContent :boolean = false;
   isOpen = false;
-isAnimating = false;
+  isAnimating = false;
 
   // ----------------------------------------------------
   // CLICK EN CUALQUIER LINK DEL NAVBAR
   // ----------------------------------------------------
-  nav(section: string) {
+  nav(section: Section) {
     // El navbar solo emite el evento.
     // El AppComponent se encarga del color, transición y navegación.
     this.menuAction.emit({ section, open: false });
   }
 
-  onMenuLinkClick(section: string, event: Event) {
+  onMenuLinkClick(section: Section, event: Event) {
     event.preventDefault();      // 🔥 importante con routerLink
     event.stopPropagation();
     this.nav(section);
