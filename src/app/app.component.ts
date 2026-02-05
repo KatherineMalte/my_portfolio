@@ -1,9 +1,12 @@
-import { Component,ViewChild , ElementRef } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component,OnInit, OnDestroy } from '@angular/core';
+import { RouterModule , Router, NavigationEnd} from '@angular/router';
+import { Subject } from 'rxjs';
 import { Navbar } from './components/navbar/navbar.component';
 import { IntroOverlay } from './intro-overlay/intro-overlay';
 import { CommonModule } from '@angular/common';
+import { take, filter } from 'rxjs/operators';
 
+import { TRANSITION_COLORS, THEME_CLASSES, Section } from '../../src/app/theme.config';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,35 +14,72 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./app.component.css'],
   imports: [RouterModule, Navbar, IntroOverlay, CommonModule]
 })
-export class AppComponent { 
+export class AppComponent implements OnInit, OnDestroy { 
 
-panelThemeClass = 'theme-home';
-color: string | null = null;
+  private destroy$ = new Subject<void>();
+  transitionColors = TRANSITION_COLORS;
+  themeClasses = THEME_CLASSES;
+  currentSection!: Section;
+  panelThemeClass!: string;
+  color: string = '';
   menuOpen = false;
   showOverlay = false;
   isTransitioning = false;
   isFadingOut = false;
-  showIntro = false;
+  showIntro = true;
+  hasPlayedIntro = false;
 
-  // Colores de transición temporales
-  transitionColors: Record<string, string> = {
-    home:  '#C47BE4',
-    work:  '#F5C857',
-    about: '#C1E59F'
-  };
+constructor(private router: Router) { 
+  const initialSection = this.getSectionFromUrl();
+    this.currentSection = initialSection;
+    this.panelThemeClass = this.themeClasses[initialSection];
+    this.color = this.transitionColors[initialSection];
+}
 
-  // Colores pastel permanentes
-  themeClasses: Record<string, string> = {
-    home: 'theme-home',
-    work: 'theme-work',
-    about: 'theme-about'
-  };
-   ngOnInit() {
-    // iniciar tenga el estilo de HOME
-    //this.panelThemeClass = this.themeClasses['home'];
-    this.color = this.transitionColors['home'];
+ngOnInit() {
+  this.router.events
+    .pipe(
+      filter(e => e instanceof NavigationEnd),
+      take(1) // solo la primera vez
+    )
+    .subscribe((event: NavigationEnd) => {
+      const path = (event as NavigationEnd).urlAfterRedirects.replace('/', '');
+      let section: Section;
+
+      if (path === 'projects') section = 'projects';
+      else if (path === 'about') section = 'about';
+      else section = 'home';
+
+      console.log('🧭 sección resuelta al cargar:', section);
+
+      // Asigna color y tema
+      this.currentSection = section;
+      this.panelThemeClass = this.themeClasses[section];
+      this.color = this.transitionColors[section];
+
+      // Mostrar overlay solo la primera vez
+      if (!this.hasPlayedIntro) {
+        this.showIntro = true;
+        this.hasPlayedIntro = true;
+      }
+    });
+}
+
+
+
+  ngOnDestroy() {
+    // limpiar suscripciones
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-  handleMenuAction(event: { section?: string; open: boolean }) {
+
+  private getSectionFromUrl(): Section {
+    const path = this.router.url.replace('/', '');
+    if (path === 'projects') return 'projects';
+    if (path === 'about') return 'about';
+    return 'home';
+  }
+  handleMenuAction(event: { section?: Section; open: boolean }) {
   
   if (event.section) {
      console.log('handleMenuAction received:', event);
@@ -51,7 +91,7 @@ color: string | null = null;
 }
 
   // ← EVENTO del navbar
-  requestThemeChange(key: string) {
+  requestThemeChange(key: Section) {
     
     // 1. Pasar color pastel al fondo permanente
     this.panelThemeClass = this.themeClasses[key] ?? 'theme-home';

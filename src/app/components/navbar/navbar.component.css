@@ -7,7 +7,7 @@
   align-items: center;
   padding: 15px 40px;
   position: relative;
-   z-index: 20;
+   z-index: 10000;
   /* navbar siempre encima del overlay */
 }
 
