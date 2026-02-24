@@ -1,33 +1,55 @@
 <div class="about-container">
 
-  <!-- TEXTO DE PRESENTACIÓN -->
-  <div class="intro-text">
+  <!-- TEXTO CENTRADO -->
+  <section class="intro-text">
     <h1 class="about-title">About Me.</h1>
+    <p>I am a software developer and designer with experience in backend development and project design since 2019. I
+      specialize in building efficient, scalable, and functional solutions without sacrificing creativity or user
+      experience. I enjoy combining logic, architecture, and design to deliver projects that are solid, engaging, and
+      easy to use.</p>
+  </section>
 
-    <p>I am Katherinne Malte, a software engineer from Bogotá, Colombia.</p>
-    <p>
-      I combine my curiosity for technology with a passion for delivering clean, efficient solutions, continuously learning
-      and exploring in a professional environment that values creativity and innovation. Since 2019,
-      I have been working as a Java backend developer. Currently, I am studying English for programmers
-      with Cisco and learning German to expand my international experience.
-    </p>
-
-    <p>
-      In my free time, I enjoy exploring my creative side through photography, capturing moments and
-      experimenting with perspectives. I also like staying active—practicing boxing, going hiking,
-      and maintaining a healthy lifestyle keep me energized and focused. These activities not only
-      allow me to recharge but also inspire new ideas and approaches in my professional work.
-    </p>
+  <div class="scroll-indicator">
+    <span class="scroll-text">S c r o l l</span>
+    <div class="scroll-divider"></div>
   </div>
+  <!-- DOS COLUMNAS TIPO LIBRO -->
+  <section class="book-layout">
+    <div class="column">
+      <p>
+        I was born and still live in Bogotá, where I discovered my passion for programming and designing web projects. Since then, I’ve worked in backend and full-stack development, both hybrid and remotely. I currently collaborate with clients locally and internationally, creating functional, scalable, and well-designed solutions while continuing to improve my English and German to expand my professional experience.
+      </p>
+    </div>
+  <div class="about-image">
+      <img src="assets/images/Monserrate.png" alt="Monserrate, Bogotá">
+     
+    </div>
+   
+  </section>
 
-  <!-- GALERÍA DE FOTOS QUE APARECEN CON EL SCROLL -->
-  <!-- <div class="photo-gallery">
-    <div
-      class="photo"
-      *ngFor="let photo of photos"
-      #photo
-      [style.backgroundImage]="'url(' + photo + ')'"
-    ></div>
-  </div> -->
+  <section class="about-hobbies">
+  <p>
+    In my free time, I enjoy working as a photographer at events and exploring new cultures. I like maintaining a healthy lifestyle by exercising and spending time outdoors, which inspires me both personally and professionally.
+  </p>
+</section>
+
+  <!-- GALERÍA CON SCROLL ANIMATION -->
+  <section class="photo-gallery">
+
+    <div class="photo-card theme-about"
+      *ngFor="let img of ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpeg','photo5.jpg','photo6.jpg']; let i = index"
+      #photoElement [class.visible]="visiblePhotos[i]">
+      <div class="photo-bg"></div>
+      <div class="photo-reveal"></div>
+
+      <div class="photo-img" [style.backgroundImage]="'url(assets/images/' + img + ')'"></div>
+    </div>
+
+  </section>
+  <div class="about-instagram">
+  <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank" rel="noopener noreferrer">
+    <span>See more on Instagram</span>
+  </a>
+</div>
 
 </div>

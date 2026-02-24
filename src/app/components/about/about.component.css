@@ -1,0 +1,217 @@
+/* ==========================================================
+   CONTENEDOR GENERAL
+   ========================================================== */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px; /* espacio superior e inferior */
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* separación entre secciones */
+  z-index: 1;
+}
+
+/* ==========================================================
+   SECCIÓN DE TEXTO CENTRADO
+   ========================================================== */
+.intro-text {
+  text-align: center;
+}
+
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.intro-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto; /* centra el párrafo */
+  color: #333;
+}
+
+/* ==========================================================
+   DOS COLUMNAS TIPO LIBRO
+   ========================================================== */
+.book-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+  gap: 40px;
+}
+
+.book-layout .column p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* responsive: una columna en pantallas pequeñas */
+@media (max-width: 768px) {
+  .book-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   GALERÍA DE FOTOS CON ANIMACIÓN
+   ========================================================== */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* dos columnas tipo libro */
+  gap: 50px;
+}
+
+/* cada tarjeta */
+.photo-card {
+  position: relative;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f7f7f7;
+  z-index: 1; /* debajo del navbar */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* fondo de punticos verdes */
+.photo-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#4CAF50 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0.35;
+  z-index: 1;
+}
+
+/* capa de transición con color del theme */
+.photo-reveal {
+  position: absolute;
+  inset: 0;
+  background: var(--theme-color); /* tema global */
+  transform: translateY(0);
+  transition: transform 0.9s ease;
+  z-index: 2;
+}
+
+/* imagen real */
+.photo-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+
+  /* estado inicial oculto arriba */
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.9s ease, opacity 0.9s ease;
+  z-index: 3; /* siempre debajo del navbar */
+  will-change: transform, opacity;
+}
+
+/* cuando entra en scroll */
+.photo-card.visible .photo-reveal {
+  transform: translateY(100%); /* la capa de tema sube dejando ver la imagen */
+}
+
+.photo-card.visible .photo-img {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* efecto cascada opcional */
+.photo-card:nth-child(odd) .photo-img {
+  transition-delay: 0.1s;
+}
+
+.photo-card:nth-child(even) .photo-img {
+  transition-delay: 0.25s;
+}
+/* Contenedor centrado debajo del texto */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* espacio desde el texto */
+}
+
+/* Texto que se mueve al hover */
+.scroll-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: #3b3a38;  /* mismo color de línea */
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: default;
+}
+
+.scroll-text:hover {
+  transform: translateY(-5px); /* sube un poco */
+  opacity: 1;
+}
+
+/* Línea vertical */
+.scroll-divider {
+  width: 1px;
+  height: 200px;
+  background-color: #3b3a38;
+  margin-top: 5px; /* separación del texto */
+  opacity: 0.6;
+}
+
+/* responsive: una columna en móvil */
+@media (max-width: 768px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+.about-hobbies {
+  margin-top: 60px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.about-instagram {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.about-instagram a {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 2px solid #3b3a38; /* color cafés oscuro */
+  border-radius: 8px;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.about-instagram a span {
+  color: #3b3a38; /* mismo color del borde */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.about-instagram a:hover {
+  background: #3b3a38; /* relleno café oscuro al pasar el cursor */
+}
+
+.about-instagram a:hover span {
+  color: #fff; /* texto blanco al hacer hover */
+}
