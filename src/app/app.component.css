@@ -18,13 +18,8 @@
   padding: 80px;
 }
 
-.overlay-container.open {
-  transition: top 0.6s ease;/*tiempo de menu*/
-  top: 0; /* se desliza hacia abajo */
-}
 .overlay-container {
   position: absolute;
-  /* relativo al panel gris */
   top: -100%;
   /* fuera del panel al inicio */
   left: 0;
@@ -34,11 +29,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /*transicion de los transicion*/
-  z-index: 0;
+  z-index: 1000;
 }
 .overlay-container.open {
-  top: 0;transition: top 0.7s ease;
+  top: 0;
+  transition: top 1.0s ease;
 }
 .overlay-container.closing {
   transition: top 0.1s ease;
