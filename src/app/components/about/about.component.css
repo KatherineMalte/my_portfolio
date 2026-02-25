@@ -127,37 +127,6 @@
 .photo-card:nth-child(even) .photo-img {
   transition-delay: 0.25s;
 }
-/* Contenedor centrado debajo del texto */
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px; /* espacio desde el texto */
-}
-
-/* Texto que se mueve al hover */
-.scroll-text {
-  font-size: 0.9rem;
-  letter-spacing: 0.3em;
-  color: #3b3a38;  /* mismo color de línea */
-  opacity: 0.7;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: default;
-}
-
-.scroll-text:hover {
-  transform: translateY(-5px); /* sube un poco */
-  opacity: 1;
-}
-
-/* Línea vertical */
-.scroll-divider {
-  width: 1px;
-  height: 200px;
-  background-color: #3b3a38;
-  margin-top: 5px; /* separación del texto */
-  opacity: 0.6;
-}
 
 /* responsive: una columna en móvil */
 @media (max-width: 768px) {

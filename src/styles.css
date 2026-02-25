@@ -15,7 +15,7 @@ p, a, li {
   font-family: "Lucida Console", "Courier New", monospace; /* o la que quieras */
   font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 1.9px;
 }
 .navbar-divider {
   width: 1px;
@@ -23,4 +23,34 @@ p, a, li {
   background-color: #3b3a38; /* tu dorado café */
   margin: 0 30px;
   opacity: 0.6; /* más elegante */
+}
+/* Contenedor centrado debajo del texto */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px; /* espacio desde el texto */
+}
+/* Texto que se mueve al hover */
+.scroll-text {
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: #3b3a38;  /* mismo color de línea */
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: default;
+}
+
+.scroll-text:hover {
+  transform: translateY(-5px); /* sube un poco */
+  opacity: 1;
+}
+
+/* Línea vertical */
+.scroll-divider {
+  width: 1px;
+  height: 400px;
+  background-color: #3b3a38;
+  margin-top: 5px; /* separación del texto */
+  opacity: 0.6;
 }
