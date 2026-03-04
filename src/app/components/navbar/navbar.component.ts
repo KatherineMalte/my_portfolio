@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {Section } from '../../../../src/app/theme.config';
+import {Section,TRANSITION_COLORS } from '../../../../src/app/theme.config';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -10,7 +10,7 @@ import {Section } from '../../../../src/app/theme.config';
   styleUrls: ['./navbar.component.css']
 })
 export class Navbar {
-
+  @Input() color!: string;
   @Input() menuOpen = false;
   @Output() menuAction = new EventEmitter<{ section?: Section, open: boolean }>();
   @Input() isTransitioning: boolean = false;

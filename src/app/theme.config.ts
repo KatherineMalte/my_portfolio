@@ -10,4 +10,4 @@ export const THEME_CLASSES: Record<string, string> = {
   about: 'theme-about'
 };
 
-export type Section = 'home' | 'projects' | 'about';
+export type Section  = keyof typeof TRANSITION_COLORS;

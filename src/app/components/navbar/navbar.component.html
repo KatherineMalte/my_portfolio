@@ -1,42 +1,55 @@
 <nav class="navbar">
-  <div class="left" >
+  <div class="left">
     <!-- LOGO -->
     <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
-      <img src="assets/images/iconoDiama.png" class="logo" alt="Logo">
+      <img src="assets/images/hause.png" class="logo" alt="Logo" [style.filter]="'drop-shadow(0 0 12px ' + color + ')'">
     </a>
-    <div class="navbar-divider"></div>
+    <div class="navbar-divider" [class.hide-all]="hideMenuContent"></div>
     <!-- BOTÓN MENU -->
-    <span class="menu-text"  [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">
+    <span class="menu-text" [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
     </span>
-     <!-- BOTÓN HIRE ME -->
-  <a class="hire-me" [class.hide-all]="hideMenuContent" href="mailto:katherinemalte73@gmail.com" target="_blank">
-    HIRE ME
-  </a>
+    <!-- BOTÓN HIRE ME -->
   </div>
-
- 
+  <!--<div class="social-row-nav">
+   Icono de correo 
+  <a class="social-link hire-me" [class.hide-all]="hideMenuContent" href="mailto:hierzuh@gmail.com" target="_blank">
+    <img src="assets/images/mail.png" alt="Gmail" class="icon social-anim">
+  </a>
+-->
+  <!-- 
+  <a class="social-link translate-es" href="#" >
+    <img src="assets/images/translator.png" alt="Español" class="icon social-anim">
+  </a>
+</div>
+-->
 
   <!-- OVERLAY DEL MENÚ -->
   <div class="overlay-container" [class.open]="menuOpen" (click)="$event.stopPropagation()">
 
     <div class="overlay" [class.open]="isOpen" [class.animating]="isAnimating">
 
-      <!-- ICONOS -->
-      <div class="social-row" [class.hide-all]="hideMenuContent">
-        <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank">
-          <img src="assets/svg/instagram.svg" class="icon social-anim">
-        </a>
+      <div class="iconos-divider" [class.hide-all]="hideMenuContent">
 
-        <a href="https://github.com/KatherineMalte" target="_blank">
-          <img src="assets/svg/github.svg" class="icon social-anim">
-        </a>
+        <!-- <div class="iconos-line" ></div> ICONOS -->
+        <div class="social-row">
+          <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank">
+            <img src="assets/svg/instagram.svg" class="icon social-anim">
+          </a>
 
-        <a href="https://www.linkedin.com/in/katherine-m-40a5461ba/" target="_blank">
-          <img src="assets/svg/linkedin.svg" class="icon social-anim">
-        </a>
+          <a href="https://github.com/KatherineMalte" target="_blank">
+            <img src="assets/svg/github.svg" class="icon social-anim">
+          </a>
+
+          <a href="https://www.linkedin.com/in/katherine-m-40a5461ba/" target="_blank">
+            <img src="assets/svg/linkedin.png" class="icon social-anim">
+          </a>
+          <a href="https://wa.me/573212271885?text=Hi%20Katherinne,%20I%20would%20like%20to%20work%20with%20you."
+            target="_blank">
+            <img src="assets/svg/whatsapp.png" class="icon social-anim" alt="WhatsApp">
+          </a>
+        </div>
       </div>
-
       <!-- LINKS DEL MENÚ -->
       <ul class="menu-links social-anim">
         <li>
@@ -60,6 +73,6 @@
           <span>A little about me and my background.</span>
         </li>
       </ul>
+    </div>
   </div>
-</div>
 </nav>

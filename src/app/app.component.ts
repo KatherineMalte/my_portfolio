@@ -1,6 +1,7 @@
 import { Component,OnInit, OnDestroy } from '@angular/core';
 import { RouterModule , Router, NavigationEnd} from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject,BehaviorSubject  } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { Navbar } from './components/navbar/navbar.component';
 import { IntroOverlay } from './intro-overlay/intro-overlay';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,9 @@ import { TRANSITION_COLORS, THEME_CLASSES, Section } from '../../src/app/theme.c
   styleUrls: ['./app.component.css'],
   imports: [RouterModule, Navbar, IntroOverlay, CommonModule]
 })
+@Injectable({ providedIn: 'root' })
 export class AppComponent implements OnInit, OnDestroy { 
+  section: Section = 'home';
 
   private destroy$ = new Subject<void>();
   transitionColors = TRANSITION_COLORS;
@@ -36,6 +39,12 @@ constructor(private router: Router) {
     this.color = this.transitionColors[initialSection];
 }
 
+  private colorSubject = new BehaviorSubject<string>(TRANSITION_COLORS['home']);
+  color$ = this.colorSubject.asObservable();
+
+  setSection(section: Section) {
+    this.colorSubject.next(TRANSITION_COLORS[section]);
+  }
 ngOnInit() {
   this.router.events
     .pipe(

@@ -6,3 +6,154 @@
   background-color: #C39B4E;
   margin-top: 12px;        /* distancia del texto */
 }
+/* ===============================
+   CONTENEDOR GENERAL
+================================= */
+.about-work {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+
+/* ===============================
+   TÍTULOS
+================================= */
+.section-title {
+  font-size: 42px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
+}
+
+.sub-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.sub-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #c1e59f;
+  margin-top: 12px;
+}
+
+
+/* ===============================
+   DESCRIPCIÓN
+================================= */
+.section-description {
+  max-width: 700px;
+  line-height: 1.8;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+
+/* ===============================
+   EXPERIENCE SECTION
+================================= */
+.experience-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.job {
+  max-width: 750px;
+  border-left: 2px solid #f0f0f0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.job::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background: #c1e59f;
+  border-radius: 50%;
+}
+
+.job h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.company {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.date {
+  display: block;
+  font-size: 13px;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.job p {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+
+/* ===============================
+   SKILLS SECTION
+================================= */
+.skills-section {
+  margin-top: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px 60px;
+}
+
+.skills-grid h5 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.skills-grid p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================= */
+@media (max-width: 900px) {
+
+  .about-work {
+    padding: 80px 25px;
+    gap: 70px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+}
