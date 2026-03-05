@@ -59,8 +59,6 @@ ngOnInit() {
       else if (path === 'about') section = 'about';
       else section = 'home';
 
-      console.log('🧭 sección resuelta al cargar:', section);
-
       // Asigna color y tema
       this.currentSection = section;
       this.panelThemeClass = this.themeClasses[section];
@@ -91,12 +89,10 @@ ngOnInit() {
   handleMenuAction(event: { section?: Section; open: boolean }) {
   
   if (event.section) {
-     console.log('handleMenuAction received:', event);
     this.requestThemeChange(event.section);
   }
 
   this.menuOpen = event.open;
-  console.log('menuOpen now:', this.menuOpen);
 }
 
   // ← EVENTO del navbar
