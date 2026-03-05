@@ -1,9 +1,16 @@
 <nav class="navbar">
   <div class="left">
     <!-- LOGO -->
-    <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
-      <img src="assets/images/hause.png" class="logo" alt="Logo" [style.filter]="'drop-shadow(0 0 12px ' + color + ')'">
-    </a>
+     <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
+  <img
+    [src]="logo"
+    class="logo"
+    alt="Logo"
+    [style.filter]="'drop-shadow(0 0 12px ' + color + ')'"
+  >
+</a>
+      <!-- <img src="assets/images/hause.png" class="logo" alt="Logo" [style.filter]="'drop-shadow(0 0 12px ' + color + ')'"> -->
+  
     <div class="navbar-divider" [class.hide-all]="hideMenuContent"></div>
     <!-- BOTÓN MENU -->
     <span class="menu-text" [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">

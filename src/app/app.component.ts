@@ -31,6 +31,9 @@ export class AppComponent implements OnInit, OnDestroy {
   isFadingOut = false;
   showIntro = true;
   hasPlayedIntro = false;
+  logoColor = '';
+  logoPath = 'assets/images/hause.png';
+  colorLogo = '#333';
 
 constructor(private router: Router) { 
   const initialSection = this.getSectionFromUrl();
@@ -54,11 +57,11 @@ ngOnInit() {
     .subscribe((event: NavigationEnd) => {
       const path = (event as NavigationEnd).urlAfterRedirects.replace('/', '');
       let section: Section;
-
+      
       if (path === 'projects') section = 'projects';
       else if (path === 'about') section = 'about';
       else section = 'home';
-
+      
       // Asigna color y tema
       this.currentSection = section;
       this.panelThemeClass = this.themeClasses[section];
@@ -69,9 +72,41 @@ ngOnInit() {
         this.showIntro = true;
         this.hasPlayedIntro = true;
       }
+      this.setTheme(event.urlAfterRedirects);
     });
+    this.setTheme(this.router.url);
 }
+setTheme(url: string) {
+if (url.includes('projects')) {
+    this.logoPath = 'assets/svg/rec.png';
+    this.colorLogo = '#3E3A34';
+  }
 
+  else if (url.includes('about')) {
+    this.logoPath = 'assets/sgv/about.svg';
+    this.colorLogo = '#2F3E2F';
+  }
+
+  else {
+    this.logoPath = 'assets/svg/hause.png';
+    this.colorLogo = '#4A3F4E';
+  }
+  document.body.classList.remove(
+    'theme-home',
+    'theme-work',
+    'theme-about'
+  );
+
+  if (url.includes('projects')) {
+    document.body.classList.add('theme-work');
+  }
+  else if (url.includes('about')) {
+    document.body.classList.add('theme-about');
+  }
+  else {
+    document.body.classList.add('theme-home');
+  }
+}
 
 
   ngOnDestroy() {

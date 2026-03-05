@@ -15,6 +15,8 @@ export class Navbar {
   @Output() menuAction = new EventEmitter<{ section?: Section, open: boolean }>();
   @Input() isTransitioning: boolean = false;
   @Input() hideMenuContent :boolean = false;
+  @Input() logo!: string;
+  @Input() colorLogo!: string;
   isOpen = false;
   isAnimating = false;
 

@@ -3,7 +3,12 @@
 * {
   font-family: "Times New Roman", Times, serif,'Poppins', sans-serif;
 }
-h1, h2, h3 {
+body {
+  color: var(--primary-text-color);
+}
+
+h1, h2, h3, p, span {
+  color: var(--primary-text-color);
   font-weight: 800;
 }
 
@@ -53,4 +58,21 @@ p, a, li {
   background-color: #3b3a38;
   margin-top: 5px; /* separación del texto */
   opacity: 0.6;
+}
+:root {
+  --primary-text-color: #4A3F4E;
+  --logo-color: #7A5C8A;
+}
+
+.theme-admin {
+  --primary-text-color: #3E3A34;
+  --logo-color: #8C6E4E;
+}
+
+.theme-client {
+  --primary-text-color: #2F3E2F;
+  --logo-color: #4F6F52;
+}
+.logo {
+  filter: drop-shadow(0 0 5px var(--logo-color));
 }

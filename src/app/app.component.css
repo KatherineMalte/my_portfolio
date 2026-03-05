@@ -40,11 +40,20 @@
   /* sube rápido */
 }
 /* Fondos pastel permanentes */
-.theme-home { background: #fff0ff;}
+.theme-home {
+  background: #fff0ff;
+  --text-color: #4A3F4E;
+}
 
-.theme-work { background: rgba(247, 229, 192, 0.906); }
+.theme-work {
+  background: rgba(247, 229, 192, 0.906);
+  --text-color: #3E3A34;
+}
 
-.theme-about { background: #edf8c3; }
+.theme-about {
+  background: #edf8c3;
+  --text-color: #2F3E2F;
+}
 
 /* Overlay temporal */
 .transition-overlay {
