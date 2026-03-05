@@ -51,46 +51,33 @@ constructor(private router: Router) {
 ngOnInit() {
   this.router.events
     .pipe(
-      filter(e => e instanceof NavigationEnd),
-      take(1) // solo la primera vez
+      filter(e => e instanceof NavigationEnd)
     )
     .subscribe((event: NavigationEnd) => {
-      const path = (event as NavigationEnd).urlAfterRedirects.replace('/', '');
+
+      const path = event.urlAfterRedirects.replace('/', '');
       let section: Section;
-      
+
       if (path === 'projects') section = 'projects';
       else if (path === 'about') section = 'about';
       else section = 'home';
-      
-      // Asigna color y tema
+
       this.currentSection = section;
       this.panelThemeClass = this.themeClasses[section];
       this.color = this.transitionColors[section];
 
-      // Mostrar overlay solo la primera vez
       if (!this.hasPlayedIntro) {
         this.showIntro = true;
         this.hasPlayedIntro = true;
       }
+
       this.setTheme(event.urlAfterRedirects);
     });
-    this.setTheme(this.router.url);
+
+  this.setTheme(this.router.url);
 }
 setTheme(url: string) {
-if (url.includes('projects')) {
-    this.logoPath = 'assets/svg/rec.png';
-    this.colorLogo = '#3E3A34';
-  }
 
-  else if (url.includes('about')) {
-    this.logoPath = 'assets/sgv/about.svg';
-    this.colorLogo = '#2F3E2F';
-  }
-
-  else {
-    this.logoPath = 'assets/svg/hause.png';
-    this.colorLogo = '#4A3F4E';
-  }
   document.body.classList.remove(
     'theme-home',
     'theme-work',
@@ -98,12 +85,20 @@ if (url.includes('projects')) {
   );
 
   if (url.includes('projects')) {
+    this.logoPath = 'assets/svg/rec.png';
+    this.colorLogo = '#f8a425';
     document.body.classList.add('theme-work');
   }
+
   else if (url.includes('about')) {
+    this.logoPath = 'assets/svg/about.png';
+    this.colorLogo = '#0bd80b';
     document.body.classList.add('theme-about');
   }
+
   else {
+    this.logoPath = 'assets/svg/hause.png';
+    this.colorLogo = '#9907ce';
     document.body.classList.add('theme-home');
   }
 }
