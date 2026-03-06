@@ -8,7 +8,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  width: 100%;             /* no ocupa toda la página */
+  width: 90%;             /* no ocupa toda la página */
   max-width: 2000px;
 
   display: flex;
@@ -112,7 +112,7 @@
   top: 80px;
   left:0;
   /* deja el navbar visible */
-  height: calc(100% - 80px);
+  height: calc(100vh - 80px);
   /* ocupa solo el espacio de abajo */
   display: flex;
   flex-direction: column;
