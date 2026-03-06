@@ -9,10 +9,10 @@ body {
 
 h1, h2, h3, p, span {
   color: var(--primary-text-color);
-  font-weight: 800;
+  font-weight: 500;
 }
 
-p, a, li {
+ a, li,ul {
   font-weight: 400;
 }
 
