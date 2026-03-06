@@ -9,7 +9,7 @@
   transform: translateX(-50%);
 
   width: 100%;             /* no ocupa toda la página */
-  max-width: 2200px;
+  max-width: 2000px;
 
   display: flex;
   justify-content: space-between;
