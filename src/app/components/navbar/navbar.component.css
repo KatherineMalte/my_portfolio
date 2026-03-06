@@ -2,42 +2,39 @@
    NAVBAR SUPERIOR
 --------------------------------------------------- */
 .navbar {
-  position: fixed;        /* ✅ fijo respecto al viewport */
-  top: 0;
-  left: 0;
-  width: 100%;            /* ocupa todo el ancho */
-  display: flex;          /* flex funciona para alinear items */
-  justify-content: space-between;
-  max-width: 1200px; /* ancho máximo de la navbar */
-  align-items: center;
-  padding: 15px 40px;
-  transform: translateZ(0);
-  z-index: 100000;          /* siempre por encima del contenido */
-  margin: 0 auto; /* centra horizontalmente */
-}
+  position: fixed;
 
-.left {
+  top: 20px;              /* separación de arriba */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;             /* no ocupa toda la página */
+  max-width: 2200px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 40px;
+
+  z-index: 100000;
+}
+.nav-left {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-.social-row-nav {
+.nav-right {
   display: flex;
-  gap: 1rem;
   align-items: center;
-  margin-left: -13rem; /* separa un poco del borde derecho */
+  gap: 20px;
 }
 
-/* Reducir ancho si quieres que no ocupe toda la pantalla */
-.social-row-nav a {
-  display: inline-flex;
-  align-items: center;
-}
 /* LOGO */
 .logo {
   width: 80px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: filter 0.35s ease, transform 0.25s ease;
 }
 
 .logo:hover {
@@ -48,7 +45,6 @@
 .menu-text,
 .hire-me {
   opacity: 1;
-  font-family: "Lucida Console", "Courier New", monospace;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -67,16 +63,12 @@
 .menu-text.open-animation {
   animation: pop 1.0s forwards;
 }
-.menu-links {
-  list-style: none;
-  padding: 8;
-  margin: 8;
-  
-}
+
 .menu-links li {
   display: absolute;
   align-items: center;
-  margin: 10px 0;
+  margin: 20px 0;
+  list-style: none;
 }
 
 /* Animación de rebote */
@@ -86,7 +78,7 @@
   }
 
   50% {
-    transform: scale(1.3);
+    transform: scale(4.3);
   }
 
   100% {
@@ -101,10 +93,10 @@
 /* CONTENEDOR QUE APARECE / DESAPARECE */
 .overlay-container {
   position: absolute;
-  left: 0;
-  height: calc(100% - 98px);
+  height: calc(89% - 97px);
   display: none;
-  pointer-events: none; /* evita bloquear navbar cuando está cerrado */
+  pointer-events: none;
+  /* evita bloquear navbar cuando está cerrado */
 }
 
 .overlay-container.open {
@@ -115,28 +107,24 @@
 
 /* CONTENIDO DEL OVERLAY */
 .overlay {
- width: 100%;
-  margin-top: 80px;              /* deja el navbar visible */
-  height: calc(100% - 80px);     /* ocupa solo el espacio de abajo */
-
+  position: fixed;     /* se queda fijo en la pantalla */
+  width: 100%;
+  top: 80px;
+  left:0;
+  /* deja el navbar visible */
+  height: calc(100% - 80px);
+  /* ocupa solo el espacio de abajo */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   background: transparent !important;
-  padding: 40px;
-  color: white;
+  padding: 70px;
 }
+
 /* cuando se abre */
 .overlay.open {
   transform: translateY(0);
   opacity: 1;
-}
-
-/* durante animación */
-.overlay.animating {
-  transition:
-    transform 0.6s ease,
-    opacity 0.3s ease;
 }
 
 /* ---------------------------------------------------
@@ -145,28 +133,22 @@
 .social-row {
   display: flex;
   gap: 50px;
-  margin-top: -40px; 
+  margin-top: -40px;
   margin-bottom: 20px;
-  
-}
 
-.icon {
-  width: 30px;
-  filter: invert(1);
-  /* blancos */
-  transition: transform 0.2s ease;
 }
 
 .icon:hover {
   transform: scale(1.2);
 }
+
 /* Estado inicial antes de entrar */
 .social-anim {
   opacity: 0;
   /* invisible */
   transform: translateX(-20px);
   /* movido 20px a la izquierda */
-  animation: slideIn 0.6s ease forwards;
+  animation: slideIn 1.0s ease forwards;
 }
 
 /* ANIMACIÓN */
@@ -217,20 +199,28 @@
   /* efecto sutil a la derecha */
   opacity: 0.7;
 }
-.hide-all{ 
-  opacity: 0 !important;
-  pointer-events: none;}
 
-  /* Contenedor horizontal de iconos */
-  /* Contenedor de los iconos */
+.hide-all {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Contenedor horizontal de iconos */
+/* Contenedor de los iconos */
 .social-row-nav {
-  position: absolute;      /* relativo al contenedor padre */
-  top: 6px;               /* distancia desde arriba */
-  right: 10px;             /* distancia desde la derecha */
-  display: flex;           /* para alinear horizontalmente los iconos */
-  gap: 15px;               /* separación entre iconos */
+  position: absolute;
+  /* relativo al contenedor padre */
+  top: 6px;
+  /* distancia desde arriba */
+  right: 10px;
+  /* distancia desde la derecha */
+  display: flex;
+  /* para alinear horizontalmente los iconos */
+  gap: 15px;
+  /* separación entre iconos */
   align-items: center;
-  z-index: 10000;          /* asegurar que estén sobre otros elementos */
+  z-index: 10000;
+  /* asegurar que estén sobre otros elementos */
 }
 
 
@@ -249,6 +239,9 @@
 
 /* Iconos */
 .icon {
+  filter: invert(1);
+  /* blancos */
+  transition: transform 0.8s ease;
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -260,32 +253,57 @@
   transform: scale(8.85);
   opacity: 0.85;
 }
-.big-link {
-  font-size: 100.6rem;
-  font-weight: bold;
-  letter-spacing: 0.9px; /* opcional para más estilo */
+
+.menu-links li:nth-child(1) a {
+  font-size: 3.5rem;
 }
 
-.menu-links li:nth-child(1) a { font-size: 3.5rem; } /* Home */
-.menu-links li:nth-child(2) a { font-size: 3.5rem; } /* Work */
-.menu-links li:nth-child(3) a { font-size: 3.5rem; } /* About */
+/* Home */
+.menu-links li:nth-child(2) a {
+  font-size: 3.5rem;
+}
+
+/* Work */
+.menu-links li:nth-child(3) a {
+  font-size: 3.5rem;
+}
+
+/* About */
 
 
 .iconos-divider {
   display: flex;
   align-items: center;
-  gap: 1rem; /* espacio entre la línea y los íconos */
+  gap: 9rem;
+  /* espacio entre la línea y los íconos */
 }
 
 .iconos-line {
-  width: 4px;          /* grosor de la línea vertical */
-  height: 100%;        /* que cubra toda la altura de los íconos */
-  background-color: gray; /* color por defecto, se sobreescribe desde TS */
+  width: 4px;
+  /* grosor de la línea vertical */
+  height: 100%;
+  /* que cubra toda la altura de los íconos */
+  background-color: gray;
+  /* color por defecto, se sobreescribe desde TS */
   transition: background-color 0.3s ease;
 }
 
-
 .social-row {
   display: flex;
-  gap: 1.0rem;         /* espacio entre íconos */
+  gap: 2.0rem;
+  /* espacio entre íconos */
+}
+
+.social-row-nav {
+  display: flex;
+  gap: 2.0rem;
+  align-items: center;
+  margin-left: -13rem;
+  /* separa un poco del borde derecho */
+}
+
+/* Reducir ancho si quieres que no ocupe toda la pantalla */
+.social-row-nav a {
+  display: inline-flex;
+  align-items: center;
 }

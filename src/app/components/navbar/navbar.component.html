@@ -1,35 +1,40 @@
 <nav class="navbar">
-  <div class="left">
-    <!-- LOGO -->
-     <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
-  <img
-    [src]="logo"
-    class="logo"
-    alt="Logo"
-    [style.filter]="'drop-shadow(0 0 12px ' + colorLogo + ')'"
-  >
-</a>
-      <!-- <img src="assets/images/hause.png" class="logo" alt="Logo" [style.filter]="'drop-shadow(0 0 12px ' + color + ')'"> -->
-  
+
+  <!-- IZQUIERDA -->
+  <div class="nav-left">
+    <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
+      <img [src]="logo" class="logo"
+           alt="Logo"
+           [style.filter]="'drop-shadow(0 0 12px ' + colorLogo + ')'">
+    </a>
+
     <div class="navbar-divider" [class.hide-all]="hideMenuContent"></div>
-    <!-- BOTÓN MENU -->
-    <span class="menu-text" [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">
+
+    <span class="menu-text"
+          [class.hide-all]="hideMenuContent"
+          (click)="toggleMenu(); $event.stopPropagation()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
     </span>
-    <!-- BOTÓN HIRE ME -->
   </div>
-  <!--<div class="social-row-nav">
-   Icono de correo 
-  <a class="social-link hire-me" [class.hide-all]="hideMenuContent" href="mailto:hierzuh@gmail.com" target="_blank">
-    <img src="assets/images/mail.png" alt="Gmail" class="icon social-anim">
-  </a>
--->
-  <!-- 
-  <a class="social-link translate-es" href="#" >
-    <img src="assets/images/translator.png" alt="Español" class="icon social-anim">
-  </a>
-</div>
--->
+  <!-- DERECHA -->
+  <div class="nav-right">
+
+    <a class="social-link hire-me"
+       [class.hide-all]="hideMenuContent"
+       href="mailto:hierzuh@gmail.com"
+       target="_blank">
+      <img src="assets/images/mail.png"
+           alt="Gmail"
+           class="icon social-anim">
+    </a>
+
+    <a class="social-link translate-es" href="#">
+      <img src="assets/images/translator.png"
+           alt="Español"
+           class="icon social-anim">
+    </a>
+  </div>
+
 
   <!-- OVERLAY DEL MENÚ -->
   <div class="overlay-container" [class.open]="menuOpen" (click)="$event.stopPropagation()">
