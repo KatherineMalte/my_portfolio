@@ -3,44 +3,33 @@
   <!-- IZQUIERDA -->
   <div class="nav-left">
     <a routerLink="/home" (click)="onMenuLinkClick('home', $event)">
-      <img [src]="logo" class="logo"
-           alt="Logo"
-           [style.filter]="'drop-shadow(0 0 12px ' + colorLogo + ')'">
+      <img [src]="logo" class="logo" alt="Logo" [style.filter]="'drop-shadow(0 0 12px ' + colorLogo + ')'">
     </a>
 
     <div class="navbar-divider" [class.hide-all]="hideMenuContent"></div>
 
-    <span class="menu-text"
-          [class.hide-all]="hideMenuContent"
-          (click)="toggleMenu(); $event.stopPropagation()">
+    <span class="menu-text" [class.hide-all]="hideMenuContent" (click)="toggleMenu(); $event.stopPropagation()">
       {{ menuOpen ? 'CLOSE' : 'MENU' }}
     </span>
   </div>
   <!-- DERECHA -->
   <div class="nav-right">
 
-    <a class="social-link hire-me"
-       [class.hide-all]="hideMenuContent"
-       href="mailto:hierzuh@gmail.com"
-       target="_blank">
-      <img src="assets/images/mail.png"
-           alt="Gmail"
-           class="icon social-anim">
+    <a class="social-link hire-me" [class.hide-all]="hideMenuContent" href="mailto:hierzuh@gmail.com" target="_blank">
+      <img src="assets/images/mail.png" alt="Gmail" class="icon social-anim">
     </a>
-    <a class="social-link translate-btn" (click)="toggleLangMenu($event)">
-    <img src="assets/images/translator.png"
-         alt="Language"
-         class="icon social-anim">
-  </a>
-   
-    <div class="lang-menu" *ngIf="showLangMenu">
-      <span (click)="changeLanguage('es')">ES</span>
-      <span (click)="changeLanguage('en')">EN</span>
-      <span (click)="changeLanguage('de')">DE</span>
+    <div class="language-container">
+      <a class="social-link translate-btn" (click)="toggleLangMenu($event)">
+        <img src="assets/images/translator.png" alt="Language" class="icon social-anim">
+      </a>
+
+      <div class="lang-menu" *ngIf="showLangMenu">
+        <span class="lang-text" (click)="changeLanguage('es')">ES</span>
+        <span class="lang-text" (click)="changeLanguage('en')">EN</span>
+        <span class="lang-text" (click)="changeLanguage('de')">DE</span>
+      </div>
     </div>
   </div>
-
-
   <!-- OVERLAY DEL MENÚ -->
   <div class="overlay-container" [class.open]="menuOpen" (click)="$event.stopPropagation()">
 

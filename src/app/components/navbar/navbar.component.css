@@ -240,8 +240,10 @@
 
 /* Enlaces de iconos */
 .social-link {
-  display: inline-block;
+  display: flex;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  flex-direction: column;   /* pone el texto debajo */
+  align-items: center; text-decoration: none;
 }
 
 /* Ocultar elementos cuando hideMenuContent = true */
@@ -317,6 +319,7 @@
 }
 
 .lang-menu {
+  margin: 8px;
   position: absolute;
   top: 35px;
   right: 0;
@@ -331,17 +334,37 @@
 
   font-size: 13px;
   color: white;
+
+  margin-top: 8px;
+  
 }
 
 .lang-menu span {
   cursor: pointer;
   transition: opacity .2s;
 }
+.lang-menu button{
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 .lang-menu span:hover {
   opacity: 0.6;
 }
-
+.lang-text {
+  color: white;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.language-container {
+  display: flex;
+  flex-direction: column;   /* esto pone todo en vertical */
+  align-items: center;      /* centra */
+  position: relative;
+}
 /* Cuando la pantalla es móvil */
 @media (max-width: 768px) {
   .menu-desc {
