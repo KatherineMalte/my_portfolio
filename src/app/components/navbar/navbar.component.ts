@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {Section,TRANSITION_COLORS } from '../../../../src/app/theme.config';
+import { Section, TRANSITION_COLORS } from '../../../../src/app/theme.config';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -19,7 +20,23 @@ export class Navbar {
   @Input() colorLogo!: string;
   isOpen = false;
   isAnimating = false;
+  showLangMenu = false;
 
+  constructor(private translate: TranslateService) {
+
+    translate.setDefaultLang('en');  // idioma por defecto
+    translate.use('en');
+
+  }
+  toggleLangMenu(event: Event) {
+    event.stopPropagation();
+    this.showLangMenu = !this.showLangMenu;
+  }
+
+  changeLanguage(lang: string) {
+    this.translate.use(lang);
+    this.showLangMenu = false;
+  }
   // ----------------------------------------------------
   // CLICK EN CUALQUIER LINK DEL NAVBAR
   // ----------------------------------------------------
@@ -40,7 +57,7 @@ export class Navbar {
   // ----------------------------------------------------
   toggleMenu() {
     this.menuAction.emit({ open: !this.menuOpen });  // actualiza estado fuera
-   
+
     this.isAnimating = true;
 
     if (!this.isOpen) {

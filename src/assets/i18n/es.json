@@ -1,0 +1,47 @@
+{
+  "NAV": {
+    "HOME": "Inicio",
+    "HOME_DESC": "Volver a la página principal",
+    "ABOUT": "Sobre mí",
+    "ABOUT_DESC": "Conoce más sobre mí",
+    "PROJECTS": "Proyectos",
+    "PROJECTS_DESC": "Explora mis proyectos recientes",
+    "CONTACT": "Contacto",
+    "CONTACT_DESC": "Ponte en contacto conmigo"
+  },
+
+  "HOME": {
+    "GREETING": "Hola",
+    "INTRO": "Soy desarrollador web",
+    "SUBTITLE": "Creo experiencias digitales modernas y eficientes.",
+    "CTA_WORK": "Ver proyectos",
+    "CTA_CONTACT": "Contáctame",
+    "SCROLL": "Desplázate para explorar",
+
+    "SECTION_FEATURES": {
+      "TITLE": "Lo que hago",
+      "FRONTEND_TITLE": "Desarrollo Frontend",
+      "FRONTEND_DESC": "Interfaces modernas, rápidas y responsivas.",
+      "BACKEND_TITLE": "Desarrollo Backend",
+      "BACKEND_DESC": "APIs y lógica robusta para aplicaciones escalables.",
+      "UI_TITLE": "Diseño UI",
+      "UI_DESC": "Diseños limpios enfocados en la experiencia del usuario."
+    },
+
+    "SECTION_PROJECTS": {
+      "TITLE": "Proyectos destacados",
+      "VIEW_ALL": "Ver todos los proyectos"
+    },
+
+    "SECTION_CONTACT": {
+      "TITLE": "Trabajemos juntos",
+      "DESCRIPTION": "Si tienes una idea o proyecto, hablemos.",
+      "BUTTON": "Enviar mensaje"
+    }
+  },
+
+  "FOOTER": {
+    "RIGHTS": "Todos los derechos reservados",
+    "MADE_WITH": "Hecho con pasión por el desarrollo"
+  }
+}
