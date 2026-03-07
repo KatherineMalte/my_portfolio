@@ -1,5 +1,5 @@
 .panel {
-  position: relative;
+  position: fixed;
   width: 99%;
   height: 98%;
   min-height: 100vh;
@@ -12,7 +12,10 @@
   background-color: transparent;
   transition: background 0.35s ease;
 }
-
+.panel-content {
+  overflow-y: auto;
+  height: 100%;
+}
 /*margen a los comp*/
 .content {
   padding: 80px;

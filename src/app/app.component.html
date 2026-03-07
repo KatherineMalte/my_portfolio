@@ -1,6 +1,6 @@
 <div 
 class="panel"
-[ngClass]="panelThemeClass">
+[ngClass]="panelThemeClass"><div class="panel-content">
 <app-intro-overlay *ngIf="showIntro" [introColor]="color"
  (finished)="showIntro = false">
  
@@ -32,4 +32,4 @@ class="panel"
     <router-outlet (activate)="startTransition()"></router-outlet>
   </div>
 
-</div>
+</div></div>

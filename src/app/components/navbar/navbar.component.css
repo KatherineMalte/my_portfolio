@@ -304,3 +304,13 @@
   display: inline-flex;
   align-items: center;
 }
+.menu-desc {
+  display: inline;
+}
+
+/* Cuando la pantalla es móvil */
+@media (max-width: 768px) {
+  .menu-desc {
+    display: none;
+  }
+}
