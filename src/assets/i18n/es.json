@@ -1,47 +1,64 @@
 {
-  "NAV": {
-    "HOME": "Inicio",
-    "HOME_DESC": "Volver a la página principal",
-    "ABOUT": "Sobre mí",
-    "ABOUT_DESC": "Conoce más sobre mí",
-    "PROJECTS": "Proyectos",
-    "PROJECTS_DESC": "Explora mis proyectos recientes",
-    "CONTACT": "Contacto",
-    "CONTACT_DESC": "Ponte en contacto conmigo"
-  },
-
   "HOME": {
-    "GREETING": "Hola",
-    "INTRO": "Soy desarrollador web",
-    "SUBTITLE": "Creo experiencias digitales modernas y eficientes.",
-    "CTA_WORK": "Ver proyectos",
-    "CTA_CONTACT": "Contáctame",
-    "SCROLL": "Desplázate para explorar",
-
-    "SECTION_FEATURES": {
-      "TITLE": "Lo que hago",
-      "FRONTEND_TITLE": "Desarrollo Frontend",
-      "FRONTEND_DESC": "Interfaces modernas, rápidas y responsivas.",
-      "BACKEND_TITLE": "Desarrollo Backend",
-      "BACKEND_DESC": "APIs y lógica robusta para aplicaciones escalables.",
-      "UI_TITLE": "Diseño UI",
-      "UI_DESC": "Diseños limpios enfocados en la experiencia del usuario."
-    },
-
-    "SECTION_PROJECTS": {
-      "TITLE": "Proyectos destacados",
-      "VIEW_ALL": "Ver todos los proyectos"
-    },
-
-    "SECTION_CONTACT": {
-      "TITLE": "Trabajemos juntos",
-      "DESCRIPTION": "Si tienes una idea o proyecto, hablemos.",
-      "BUTTON": "Enviar mensaje"
-    }
+    "HERO_NAME": "Hola, mi nombre es",
+    "DESCRIPTION": "Soy una desarrolladora creativa independiente de Colombia.",
+    "SCROLL": "Desplazar",
+    "COLLAB": "Trabajemos juntos.",
+    "DETAILS": "Desde construir sistemas backend sólidos hasta diseñar aplicaciones web escalables, ayudo a equipos y clientes a llevar ideas ambiciosas a la web. Ya sea creando APIs eficientes, diseñando esquemas de base de datos limpios o explorando interfaces modernas con un diseño cuidado, mi enfoque siempre está en crear soluciones robustas, eficientes y accesibles.",
+    "BTN_WORK": "Ver mis proyectos"
   },
+  "ABOUT": {
+    "TITLE": "Sobre mi trabajo",
+    "DESCRIPTION": "Desarrolladora de software especializada en desarrollo Back-End, principalmente con Java, y experiencia trabajando con .NET y Python. Tengo una sólida base en bases de datos relacionales y arquitectura de aplicaciones empresariales. He trabajado en entornos Agile (Scrum), contribuyendo al análisis de requerimientos, diseño de soluciones y resolución de problemas técnicos. Me motiva el aprendizaje continuo y la adopción de nuevas tecnologías para construir sistemas eficientes, escalables y confiables.",
 
-  "FOOTER": {
-    "RIGHTS": "Todos los derechos reservados",
-    "MADE_WITH": "Hecho con pasión por el desarrollo"
+    "EXPERIENCE_TITLE": "Experiencia laboral",
+
+    "JOB1_TITLE": "Analista de Software – Arquitectura Bancaria",
+    "JOB1_COMPANY": "SII Group Colombia",
+    "JOB1_DATE": "Nov 2024 – Feb 2025",
+    "JOB1_DESC": "Trabajé en sistemas de arquitectura bancaria utilizando Java Spring para optimizar aplicaciones empresariales.",
+
+    "JOB2_TITLE": "Capacitación técnica y soporte",
+    "JOB2_COMPANY": "Sistran",
+    "JOB2_DATE": "Ago 2024 – Oct 2024",
+    "JOB2_DESC": "Participé en capacitaciones de aplicaciones, resolución de incidentes y aprendizaje de metodologías de machine learning.",
+
+    "JOB3_TITLE": "Analista programadora",
+    "JOB3_COMPANY": "SumiTemp",
+    "JOB3_DATE": "Jul 2023 – Ago 2024",
+    "JOB3_DESC": "Validé documentación de desarrollo y desarrollé soluciones de pruebas automatizadas con Selenium.",
+
+    "JOB4_TITLE": "Desarrolladora Java",
+    "JOB4_COMPANY": "Acrecer Inmobiliaria",
+    "JOB4_DATE": "May 2022 – Oct 2022",
+    "JOB4_DESC": "Mantenimiento de aplicaciones empresariales usando Java y JSP con bases de datos MySQL y APIs REST.",
+
+    "JOB5_TITLE": "Analista programadora",
+    "JOB5_COMPANY": "Cognicase Management Consulting",
+    "JOB5_DATE": "Abr 2021 – Nov 2021",
+    "JOB5_DESC": "Soporte técnico para aplicación móvil bancaria usando herramientas Veritran.",
+
+    "JOB6_TITLE": "Desarrolladora Java Back-End Junior",
+    "JOB6_COMPANY": "Tecnoevolución Diálogo Software",
+    "JOB6_DATE": "Ene 2019 – Abr 2021",
+    "JOB6_DESC": "Desarrollo de APIs REST con Spring Boot, JPA/ORM y MySQL.",
+
+    "SKILLS_TITLE": "Competencias técnicas",
+    "LANGUAGES": "Lenguajes",
+    "DATABASES": "Bases de datos",
+    "FRAMEWORKS": "Frameworks y arquitectura",
+    "TOOLS": "Herramientas",
+    "METHODS": "Metodologías",
+    "LANG_LEVEL": "Idiomas"
+  },
+  "ABOUT_ME": {
+    "TITLE": "Sobre mí.",
+    "INTRO": "Soy desarrolladora de software y diseñadora con experiencia en desarrollo backend y diseño de proyectos desde 2019. Me especializo en construir soluciones eficientes, escalables y funcionales sin sacrificar la creatividad ni la experiencia del usuario. Disfruto combinar lógica, arquitectura y diseño para entregar proyectos sólidos, atractivos y fáciles de usar.",
+
+    "STORY": "Nací y aún vivo en Bogotá, donde descubrí mi pasión por programar y diseñar proyectos web. Desde entonces he trabajado en desarrollo backend y full-stack, tanto de forma híbrida como remota. Actualmente colaboro con clientes locales e internacionales creando soluciones funcionales, escalables y bien diseñadas, mientras continúo mejorando mi inglés y alemán para ampliar mi experiencia profesional.",
+
+    "HOBBIES": "En mi tiempo libre disfruto trabajar como fotógrafa en eventos y explorar nuevas culturas. Me gusta mantener un estilo de vida saludable haciendo ejercicio y pasando tiempo al aire libre, lo que me inspira tanto personal como profesionalmente.",
+
+    "INSTAGRAM": "Ver más en Instagram"
   }
 }

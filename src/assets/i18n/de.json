@@ -1,0 +1,64 @@
+{
+  "HOME": {
+    "HERO_NAME": "Hallo, mein Name ist",
+    "DESCRIPTION": "Ich bin eine unabhängige kreative Entwicklerin aus Kolumbien.",
+    "SCROLL": "Scrollen",
+    "COLLAB": "Lass uns zusammenarbeiten.",
+    "DETAILS": "Vom Aufbau stabiler Backend-Systeme bis zur Entwicklung skalierbarer Webanwendungen helfe ich Teams und Kunden dabei, ambitionierte Ideen im Web zum Leben zu erwecken. Ob effiziente APIs, saubere Datenbankarchitekturen oder moderne Benutzeroberflächen mit durchdachtem Design – mein Fokus liegt immer auf robusten, leistungsfähigen und zugänglichen Lösungen.",
+    "BTN_WORK": "Meine Projekte ansehen"
+  },
+  "ABOUT": {
+    "TITLE": "Über meine Arbeit",
+    "DESCRIPTION": "Softwareentwicklerin mit Spezialisierung auf Back-End-Entwicklung, hauptsächlich mit Java, sowie Erfahrung mit .NET und Python. Ich habe einen starken Hintergrund in relationalen Datenbanken und Unternehmensarchitekturen.",
+
+    "EXPERIENCE_TITLE": "Berufserfahrung",
+
+    "JOB1_TITLE": "Softwareanalystin – Bankenarchitektur",
+    "JOB1_COMPANY": "SII Group Colombia",
+    "JOB1_DATE": "Nov 2024 – Feb 2025",
+    "JOB1_DESC": "Arbeit an Bankenarchitektursystemen mit Java Spring zur Optimierung von Unternehmensanwendungen.",
+
+    "JOB2_TITLE": "Technische Schulung und Support",
+    "JOB2_COMPANY": "Sistran",
+    "JOB2_DATE": "Aug 2024 – Okt 2024",
+    "JOB2_DESC": "Teilnahme an Anwendungsschulungen und Problemlösungen.",
+
+    "JOB3_TITLE": "Programmieranalystin",
+    "JOB3_COMPANY": "SumiTemp",
+    "JOB3_DATE": "Jul 2023 – Aug 2024",
+    "JOB3_DESC": "Validierung von Entwicklungsdokumentation und automatisierte Tests mit Selenium.",
+
+    "JOB4_TITLE": "Java Entwicklerin",
+    "JOB4_COMPANY": "Acrecer Inmobiliaria",
+    "JOB4_DATE": "Mai 2022 – Okt 2022",
+    "JOB4_DESC": "Wartung von Unternehmensanwendungen mit Java und JSP.",
+
+    "JOB5_TITLE": "Programmieranalystin",
+    "JOB5_COMPANY": "Cognicase Management Consulting",
+    "JOB5_DATE": "Apr 2021 – Nov 2021",
+    "JOB5_DESC": "Technischer Support für eine mobile Banking-App.",
+
+    "JOB6_TITLE": "Junior Java Back-End Entwicklerin",
+    "JOB6_COMPANY": "Tecnoevolución Diálogo Software",
+    "JOB6_DATE": "Jan 2019 – Apr 2021",
+    "JOB6_DESC": "Entwicklung von REST APIs mit Spring Boot und MySQL.",
+
+    "SKILLS_TITLE": "Technische Kompetenzen",
+    "LANGUAGES": "Programmiersprachen",
+    "DATABASES": "Datenbanken",
+    "FRAMEWORKS": "Frameworks und Architektur",
+    "TOOLS": "Werkzeuge",
+    "METHODS": "Methoden",
+    "LANG_LEVEL": "Sprachen"
+  },
+  "ABOUT_ME": {
+    "TITLE": "Über mich.",
+    "INTRO": "Ich bin Softwareentwicklerin und Designerin mit Erfahrung in der Backend-Entwicklung und im Projektdesign seit 2019. Ich spezialisiere mich auf effiziente, skalierbare und funktionale Lösungen, ohne Kreativität oder Benutzererfahrung zu vernachlässigen.",
+
+    "STORY": "Ich wurde in Bogotá geboren und lebe noch immer dort. Dort entdeckte ich meine Leidenschaft für Programmierung und Webprojekte. Seitdem arbeite ich in der Backend- und Full-Stack-Entwicklung, sowohl hybrid als auch remote. Derzeit arbeite ich mit lokalen und internationalen Kunden zusammen und entwickle funktionale und skalierbare Lösungen.",
+
+    "HOBBIES": "In meiner Freizeit arbeite ich gerne als Fotografin bei Veranstaltungen und entdecke neue Kulturen. Außerdem achte ich auf einen gesunden Lebensstil mit Sport und Aktivitäten im Freien.",
+
+    "INSTAGRAM": "Mehr auf Instagram sehen"
+  }
+}

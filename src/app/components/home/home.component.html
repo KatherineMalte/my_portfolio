@@ -4,14 +4,18 @@
 
     <!-- IZQUIERDA -->
     <div class="book-left">
-      <h1 class="hero-name">Hi, my name is <br>Katherinne Malte</h1>
+      <h1 class="hero-name">
+        {{ 'HOME.HERO_NAME' | translate }} <br>
+        Katherinne Malte
+      </h1>
 
       <p class="hero-description">
-        I'm an independent creative developer from Colombia.
+        {{ 'HOME.DESCRIPTION' | translate }}
       </p>
 
       <div class="scroll-indicator">
         <span class="scroll-text">
+          <!-- {{'HOME.SCROLL' | translate}} -->
           <span>S</span>
           <span>c</span>
           <span>r</span>
@@ -24,13 +28,10 @@
 
       <div class="hero-spacer"></div>
 
-      <p class="hero-collab">Let's work together.</p>
+      <p class="hero-collab">{{ 'HOME.COLLAB' | translate }}</p>
 
       <p class="hero-details">
-        From building solid backend systems to designing scalable web applications, I help teams and clients bring
-        ambitious ideas to life on the web. Whether it’s crafting efficient APIs, architecting clean database schemas,
-        or exploring modern interfaces with thoughtful design, my focus is always on creating solutions that are robust,
-        performant and accessible.
+        {{ 'HOME.DETAILS' | translate }}
       </p>
 
       <!-- <div class="hero-btn-wrapper">
@@ -49,7 +50,7 @@
 
         <div class="code-body">
           <span>const developer = "Katherinne";</span>
-          <span>stack = ["Java", "Spring", "Python"];</span>
+          <span>stack = ["Java", "Spring", "Python", "angular"];</span>
           <span>build("scalable systems");</span>
           <span>export default developer;</span>
         </div>

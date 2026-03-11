@@ -1,0 +1,65 @@
+{
+  "HOME": {
+    "HERO_NAME": "Hi, my name is",
+    "DESCRIPTION": "I'm an independent creative developer from Colombia.",
+    "SCROLL": "Scroll",
+    "COLLAB": "Let's work together.",
+    "DETAILS": "From building solid backend systems to designing scalable web applications, I help teams and clients bring ambitious ideas to life on the web. Whether it’s crafting efficient APIs, architecting clean database schemas, or exploring modern interfaces with thoughtful design, my focus is always on creating solutions that are robust, performant and accessible.",
+    "BTN_WORK": "See my work"
+  }
+  ,
+  "ABOUT": {
+    "TITLE": "About My Work",
+    "DESCRIPTION": "Software developer specialized in Back-End development, primarily with Java, and experience working with .NET and Python. I have a strong background in relational databases and enterprise application architecture. I’ve worked within Agile (Scrum) environments, contributing to requirement analysis, solution design, and technical problem-solving. I’m driven by continuous learning and the adoption of emerging technologies to build efficient, scalable, and reliable systems.",
+
+    "EXPERIENCE_TITLE": "Work Experience",
+
+    "JOB1_TITLE": "Software Analyst – Banking Architecture",
+    "JOB1_COMPANY": "SII Group Colombia",
+    "JOB1_DATE": "Nov 2024 – Feb 2025",
+    "JOB1_DESC": "Worked on banking architecture systems using Java Spring to optimize and adjust enterprise applications. Supported architectural reviews aligned with APX and ASO guidelines.",
+
+    "JOB2_TITLE": "Technical Training & Support",
+    "JOB2_COMPANY": "Sistran",
+    "JOB2_DATE": "Aug 2024 – Oct 2024",
+    "JOB2_DESC": "Participated in application training, incident resolution, and foundational learning in machine learning methodologies.",
+
+    "JOB3_TITLE": "Programmer Analyst",
+    "JOB3_COMPANY": "SumiTemp",
+    "JOB3_DATE": "Jul 2023 – Aug 2024",
+    "JOB3_DESC": "Validated development documentation according to client guidelines and developed automated testing solutions with Selenium.",
+
+    "JOB4_TITLE": "Java Developer",
+    "JOB4_COMPANY": "Acrecer Inmobiliaria",
+    "JOB4_DATE": "May 2022 – Oct 2022",
+    "JOB4_DESC": "Maintained enterprise applications using Java and JSP, integrating MySQL databases and REST APIs.",
+
+    "JOB5_TITLE": "Analyst Programmer",
+    "JOB5_COMPANY": "Cognicase Management Consulting",
+    "JOB5_DATE": "Apr 2021 – Nov 2021",
+    "JOB5_DESC": "Provided technical support for a banking mobile application using Veritran tools.",
+
+    "JOB6_TITLE": "Junior Java Back-End Developer",
+    "JOB6_COMPANY": "Tecnoevolución Diálogo Software",
+    "JOB6_DATE": "Jan 2019 – Apr 2021",
+    "JOB6_DESC": "Developed RESTful APIs using Spring Boot, JPA/ORM, MVC architecture and MySQL.",
+
+    "SKILLS_TITLE": "Technical Competencies",
+    "LANGUAGES": "Languages",
+    "DATABASES": "Databases",
+    "FRAMEWORKS": "Frameworks & Architecture",
+    "TOOLS": "Tools",
+    "METHODS": "Methods",
+    "LANG_LEVEL": "Languages"
+  },"ABOUT_ME": {
+    "TITLE": "About Me.",
+    "INTRO": "I am a software developer and designer with experience in backend development and project design since 2019. I specialize in building efficient, scalable, and functional solutions without sacrificing creativity or user experience. I enjoy combining logic, architecture, and design to deliver projects that are solid, engaging, and easy to use.",
+
+    "STORY": "I was born and still live in Bogotá, where I discovered my passion for programming and designing web projects. Since then, I’ve worked in backend and full-stack development, both hybrid and remotely. I currently collaborate with clients locally and internationally, creating functional, scalable, and well-designed solutions while continuing to improve my English and German to expand my professional experience.",
+
+    "HOBBIES": "In my free time, I enjoy working as a photographer at events and exploring new cultures. I like maintaining a healthy lifestyle by exercising and spending time outdoors, which inspires me both personally and professionally.",
+
+    "INSTAGRAM": "See more on Instagram"
+  }
+
+}
