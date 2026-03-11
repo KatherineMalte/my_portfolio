@@ -19,8 +19,18 @@ import { filter } from 'rxjs/operators';
 })
 export class About implements AfterViewInit {
 
- visiblePhotos: boolean[] = [];
+// visiblePhotos: boolean[] = [];
   userHasScrolled = false;
+  images = [
+  'photo1.jpg',
+  'photo2.jpg',
+  'photo3.jpg',
+  'photo4.jpeg',
+  'photo5.jpg',
+  'photo6.jpg'
+];
+
+visiblePhotos = new Array(this.images.length).fill(false);
 
   @ViewChildren('photoElement') photoElements!: QueryList<ElementRef>;
 

@@ -38,16 +38,14 @@
   <!-- GALERÍA CON SCROLL ANIMATION -->
   <section class="photo-gallery">
 
-    <div class="photo-card theme-about"
-      *ngFor="let img of ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpeg','photo5.jpg','photo6.jpg']; let i = index"
-      #photoElement [class.visible]="visiblePhotos[i]">
-      <div class="photo-bg"></div>
-      <div class="photo-reveal"></div>
+  <div class="photo-card"
+       *ngFor="let img of images">
 
-      <div class="photo-img" [style.backgroundImage]="'url(assets/images/' + img + ')'"></div>
-    </div>
+    <img [src]="'assets/images/' + img" alt="photo">
 
-  </section>
+  </div>
+
+</section>
   <div class="about-instagram">
     <a href="https://www.instagram.com/katheri2nem4?igsh=Y2lvNXZueXVxeTJ2" target="_blank" rel="noopener noreferrer">
       <span>{{ 'ABOUT_ME.INSTAGRAM' | translate }}</span>
