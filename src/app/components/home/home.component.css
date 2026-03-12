@@ -143,6 +143,7 @@
 
   .book-hero {
     grid-template-columns: 1fr;
+    padding: 80px 25px;
     gap: 60px;
   }
 
