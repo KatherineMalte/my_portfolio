@@ -4,7 +4,11 @@
 .book-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 140px 60px;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* separación entre secciones */
+  z-index: 1;
 }
 
 .book-hero {
@@ -139,12 +143,12 @@
 /* =====================================
    RESPONSIVE
 ===================================== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
   .book-hero {
     grid-template-columns: 1fr;
-    padding: 80px 25px;
-    gap: 60px;
+    justify-items: center;   /* centra horizontalmente */
+    text-align: center;      /* centra el texto */
   }
 
   .hero-name {
