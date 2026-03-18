@@ -1,10 +1,14 @@
 .panel {
   position: fixed;
-  width: 98%;
-  height: 98%;
-  min-height: 100vh;
-  /* ocupar toda la altura de la pantalla */
+  top: 1%;
+  left: 1%;
+  right: 1%;
+  bottom: 1%; 
+ 
+  /* min-height: 100vh;
   margin: 0 auto;
+  ocupar toda la altura de la pantalla */
+  
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -93,7 +97,9 @@
 
 @media (max-width: 768px) {
   .panel {
-    width: 95%;   /* un poco más de margen */
-    height: 97%;
+   top: 2%;
+    bottom: 2%;
+    left: 3%;
+    right: 3%;
   }
 }
