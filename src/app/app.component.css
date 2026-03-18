@@ -90,3 +90,10 @@
 :root {
   --transition-color: 0.2s; /* mismo tiempo para overlay y loading */
 }
+
+@media (max-width: 768px) {
+  .panel {
+    width: 95%;   /* un poco más de margen */
+    height: 97%;
+  }
+}
