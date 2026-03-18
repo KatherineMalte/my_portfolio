@@ -127,7 +127,11 @@ setTheme(url: string) {
 
   // ← EVENTO del navbar
   requestThemeChange(key: Section) {
-    
+     const currentUrl = this.router.url.replace('/', '');
+
+  if (currentUrl === key) {
+    return;
+  }
     // 1. Pasar color pastel al fondo permanente
     this.panelThemeClass = this.themeClasses[key] ?? 'theme-home';
    // this.overlayColor = this.transitionColors[key] ?? 'rgba(0,0,0,0.2)';
