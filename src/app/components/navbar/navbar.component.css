@@ -373,11 +373,11 @@
   .nav-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
 }
 }
