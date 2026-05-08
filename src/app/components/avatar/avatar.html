@@ -1,0 +1,52 @@
+<div class="avatar-container">
+
+  <svg viewBox="0 0 320 420">
+
+    <!-- 💇‍♀️ Cabello izquierda -->
+    <path d="M110 140 Q90 200 110 300 Q140 330 150 300" class="stroke"/>
+
+    <!-- 💇‍♀️ Cabello derecha -->
+    <path d="M210 140 Q230 200 210 300 Q180 330 170 300" class="stroke"/>
+
+    <!-- 🧍‍♀️ Hombros -->
+    <path d="M90 340 Q160 300 230 340" class="stroke"/>
+
+    <!-- 🧍‍♀️ Cuello delgado -->
+    <path d="M145 300 L150 270" class="stroke"/>
+    <path d="M175 300 L170 270" class="stroke"/>
+
+    <!-- 👤 Cara (más redonda con mandíbula suave) -->
+    <path d="M120 160 Q160 120 200 160 Q210 220 180 260 Q160 275 140 260 Q110 220 120 160 Z" class="stroke"/>
+
+    <!-- 👂 Oreja izquierda -->
+    <path d="M118 200 Q110 210 118 220" class="stroke"/>
+
+    <!-- 👂 Oreja derecha -->
+    <path d="M202 200 Q210 210 202 220" class="stroke"/>
+
+    <!-- 😠 Cejas gruesas -->
+    <path [attr.d]="leftBrow" class="brow"/>
+    <path [attr.d]="rightBrow" class="brow"/>
+
+    <!-- 👀 Ojos -->
+    <path d="M130 180 Q140 170 150 180 Q140 190 130 180 Z" class="stroke"/>
+    <path d="M170 180 Q180 170 190 180 Q180 190 170 180 Z" class="stroke"/>
+
+    <!-- Pupilas -->
+    <circle [attr.cx]="leftPupil.x" [attr.cy]="leftPupil.y" r="4" class="fill"/>
+    <circle [attr.cx]="rightPupil.x" [attr.cy]="rightPupil.y" r="4" class="fill"/>
+
+    <!-- 👃 Nariz curva -->
+    <path 
+      [attr.d]="'M160 200 Q' + (150 + noseOffset) + ' 210 160 225'" 
+      class="stroke"
+    />
+
+    <!-- 👄 Boca -->
+    <path [attr.d]="mouthPath" class="stroke"/>
+
+    <!-- 💋 Lunar -->
+    <circle [attr.cx]="mole.x" [attr.cy]="mole.y" r="2" class="fill"/>
+
+  </svg>
+</div>

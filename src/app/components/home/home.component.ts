@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Section } from '../../../../src/app/theme.config';
-
+import { Avatar } from '../avatar/avatar';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslateModule],
+  imports: [TranslateModule, Avatar],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
