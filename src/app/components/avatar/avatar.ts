@@ -1,4 +1,15 @@
-import { Component, HostListener } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  NgZone,
+  OnDestroy,
+  OnInit,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { FaceState, buildFace } from './avatar-geometry';
 
 @Component({
   selector: 'app-avatar',
@@ -6,55 +17,96 @@ import { Component, HostListener } from '@angular/core';
   templateUrl: './avatar.html',
   styleUrl: './avatar.css',
 })
-export class Avatar {
- // 👀 Pupilas
-  leftPupil = { x: 140, y: 180 };
-  rightPupil = { x: 180, y: 180 };
+export class Avatar implements OnInit, OnDestroy {
+  private host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private zone = inject(NgZone);
 
-  // 👃 Nariz (curva dinámica)
-  noseOffset = 0;
+  /** Estado actual (suavizado) de la cara */
+  private state = signal<FaceState>({ lookX: 0, lookY: 0, smile: 0, blink: 0 });
 
-  // 👄 Boca
-  mouthPath = "M140 250 Q160 250 180 250";
+  /** Todos los paths ya calculados, listos para el template */
+  face = computed(() => buildFace(this.state()));
 
-  // 😠 Cejas (gruesas)
-  leftBrow = "M130 155 Q140 145 150 155";
-  rightBrow = "M170 155 Q180 145 190 155";
+  // objetivos hacia los que se interpola cada frame
+  private target = { lookX: 0, lookY: 0, smile: 0 };
+  private blinkStart = -1;
+  private nextBlink = 0;
+  private raf = 0;
 
-  // 💋 Lunar
-  mole = { x: 178, y: 242 };
+  ngOnInit() {
+    this.nextBlink = performance.now() + 2000;
+    // el bucle de animación corre fuera de la zona para no disparar CD global
+    this.zone.runOutsideAngular(() => {
+      const tick = (now: number) => {
+        this.step(now);
+        this.raf = requestAnimationFrame(tick);
+      };
+      this.raf = requestAnimationFrame(tick);
+    });
+  }
 
-  lastX = 0;
-  lastY = 0;
+  ngOnDestroy() {
+    cancelAnimationFrame(this.raf);
+  }
 
-  @HostListener('mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(e: MouseEvent) {
+    const r = this.host.nativeElement.getBoundingClientRect();
+    // centro aproximado de la cara dentro del SVG (viewBox 320 × 420)
+    const cx = r.left + r.width * 0.5;
+    const cy = r.top + r.height * (200 / 420);
 
-    const x = event.clientX;
-    const y = event.clientY;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
 
-    const moveX = (x - window.innerWidth / 2) * 0.02;
-    const moveY = (y - window.innerHeight / 2) * 0.02;
+    // mirada: normalizada y saturada
+    const reach = Math.max(r.width, 300);
+    this.target.lookX = Math.max(-1, Math.min(1, dx / reach));
+    this.target.lookY = Math.max(-1, Math.min(1, dy / reach));
 
-    // 👀 Pupilas
-    this.leftPupil.x = 140 + moveX;
-    this.leftPupil.y = 180 + moveY;
+    // sonrisa: crece cuanto más cerca está el cursor de la cara
+    const dist = Math.hypot(dx, dy);
+    const near = Math.max(0, 1 - dist / (reach * 1.1));
+    this.target.smile = Math.min(1, near * 1.35);
+  }
 
-    this.rightPupil.x = 180 + moveX;
-    this.rightPupil.y = 180 + moveY;
+  @HostListener('document:mouseleave')
+  onLeave() {
+    this.target = { lookX: 0, lookY: 0, smile: 0 };
+  }
 
-    // 👃 Nariz (curva se mueve)
-    this.noseOffset = moveX * 0.5;
+  private step(now: number) {
+    const s = this.state();
 
-    // 😠 Cejas reaccionan
-    this.leftBrow = `M130 ${155 + moveY} Q140 ${145 + moveY} 150 ${155 + moveY}`;
-    this.rightBrow = `M170 ${155 + moveY} Q180 ${145 + moveY} 190 ${155 + moveY}`;
+    // parpadeo aleatorio (150 ms)
+    let blink = 0;
+    if (this.blinkStart < 0 && now >= this.nextBlink) this.blinkStart = now;
+    if (this.blinkStart >= 0) {
+      const t = (now - this.blinkStart) / 150;
+      if (t >= 1) {
+        this.blinkStart = -1;
+        this.nextBlink = now + 2200 + Math.random() * 3500;
+      } else {
+        blink = Math.sin(t * Math.PI);
+      }
+    }
 
-    // 👄 Boca leve movimiento
-    this.mouthPath = `M140 ${250 + moveY} Q160 ${250 + moveY + 5} 180 ${250 + moveY}`;
+    const k = 0.14; // suavizado
+    const next: FaceState = {
+      lookX: s.lookX + (this.target.lookX - s.lookX) * k,
+      lookY: s.lookY + (this.target.lookY - s.lookY) * k,
+      smile: s.smile + (this.target.smile - s.smile) * 0.09,
+      blink,
+    };
 
-    // 💋 Lunar se mueve sutil
-    this.mole.x = 178 + moveX * 0.2;
-    this.mole.y = 242 + moveY * 0.2;
+    const same =
+      Math.abs(next.lookX - s.lookX) < 0.0005 &&
+      Math.abs(next.lookY - s.lookY) < 0.0005 &&
+      Math.abs(next.smile - s.smile) < 0.0005 &&
+      next.blink === s.blink;
+    if (same) return;
+
+    // volver a la zona solo cuando hay cambios reales
+    this.zone.run(() => this.state.set(next));
   }
 }

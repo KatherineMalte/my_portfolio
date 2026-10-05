@@ -1,52 +1,186 @@
+@let f = face();
+
 <div class="avatar-container">
+  <svg viewBox="0 0 320 420" role="img" aria-label="Avatar que sigue el cursor y sonríe">
+    <defs>
+      <clipPath id="av-clip-l"><path [attr.d]="f.leftEye.shape" /></clipPath>
+      <clipPath id="av-clip-r"><path [attr.d]="f.rightEye.shape" /></clipPath>
+      <!-- NUEVO: textura de motas de la chaqueta -->
+      <pattern id="av-speckle" width="14" height="14" patternUnits="userSpaceOnUse">
+        <path d="M2 3 l2 1 M9 2 l1 2.5 M5 8 l2.5 1 M11 9 l2 -1.5 M1 12 l1.2 -2.5 M7 13 l1.5 -1"
+              stroke="#8d8a86" stroke-width="0.9" stroke-linecap="round" fill="none" />
+      </pattern>
+    </defs>
 
-  <svg viewBox="0 0 320 420">
+    <!-- ═════════ Cuerpo (no se mueve) ═════════ -->
 
-    <!-- 💇‍♀️ Cabello izquierda -->
-    <path d="M110 140 Q90 200 110 300 Q140 330 150 300" class="stroke"/>
+    <!-- Cuello (sin cambios) -->
+    <path class="stroke paper" d="M146 250 Q149 284 143 312 Q160 340 177 312 Q171 284 174 250 Z" />
+    <path class="faint" d="M150 292 Q154 300 152 310" />
+    <path class="faint" d="M170 292 Q166 300 168 310" />
 
-    <!-- 💇‍♀️ Cabello derecha -->
-    <path d="M210 140 Q230 200 210 300 Q180 330 170 300" class="stroke"/>
+    <!-- NUEVO: pecho en V (piel) + camiseta negra de cuello en V -->
+    <path class="stroke paper" d="M138 304 L160 356 L182 304 Q160 338 138 304 Z" />
+    <path class="stroke top-black" d="M152 346 Q160 366 168 346 L176 420 L144 420 Z" />
 
-    <!-- 🧍‍♀️ Hombros -->
-    <path d="M90 340 Q160 300 230 340" class="stroke"/>
+    <!-- NUEVO: chaqueta izquierda con solapa -->
+    <path class="stroke jacket" d="M34 420 Q42 346 112 326 L132 300 L138 304 L150 346 L146 420 Z" />
+    <path class="speckle" d="M34 420 Q42 346 112 326 L132 300 L138 304 L150 346 L146 420 Z" />
+    <path class="fine jacket-line" d="M132 300 L118 332 L152 380" />
+    <path class="fine jacket-line" d="M96 360 Q104 392 100 420" />
+    <path class="faint jacket-line" d="M70 400 Q84 372 110 352" />
 
-    <!-- 🧍‍♀️ Cuello delgado -->
-    <path d="M145 300 L150 270" class="stroke"/>
-    <path d="M175 300 L170 270" class="stroke"/>
+    <!-- NUEVO: chaqueta derecha con solapa -->
+    <path class="stroke jacket" d="M286 420 Q278 346 208 326 L188 300 L182 304 L170 346 L174 420 Z" />
+    <path class="speckle" d="M286 420 Q278 346 208 326 L188 300 L182 304 L170 346 L174 420 Z" />
+    <path class="fine jacket-line" d="M188 300 L202 332 L168 380" />
+    <path class="fine jacket-line" d="M224 360 Q216 392 220 420" />
+    <path class="faint jacket-line" d="M250 400 Q236 372 210 352" />
 
-    <!-- 👤 Cara (más redonda con mandíbula suave) -->
-    <path d="M120 160 Q160 120 200 160 Q210 220 180 260 Q160 275 140 260 Q110 220 120 160 Z" class="stroke"/>
+    <!-- ═════════ Cabeza (gira y se desplaza hacia el cursor) ═════════ -->
+    <g [attr.transform]="f.head">
 
-    <!-- 👂 Oreja izquierda -->
-    <path d="M118 200 Q110 210 118 220" class="stroke"/>
+      <!-- Sombra bajo la mandíbula -->
+      <path class="faint" d="M148 268 Q160 280 172 268" />
+      <path class="faint" d="M152 276 Q160 284 168 276" />
 
-    <!-- 👂 Oreja derecha -->
-    <path d="M202 200 Q210 210 202 220" class="stroke"/>
+      <!-- Mechones laterales (detrás de la cara) — ahora largos y ondulados -->
+      <path class="stroke hair" d="M118 176 Q88 188 82 246 Q78 296 92 326 Q86 346 106 352 Q126 356 140 338 Q150 330 148 322 Q132 304 128 268 Q124 232 124 204 Z" />
+      <path class="stroke hair" d="M202 176 Q232 186 240 240 Q252 288 244 314 Q264 330 252 350 Q232 368 210 352 Q196 362 182 346 Q170 338 172 326 Q188 304 192 268 Q196 232 196 204 Z" />
+      <!-- Hebras / ondas de los mechones -->
+      <path class="fine hair-line" d="M106 214 Q96 262 106 318" />
+      <path class="fine hair-line" d="M114 226 Q106 270 116 332" />
+      <path class="fine hair-line" d="M122 250 Q118 292 132 326" />
+      <path class="fine hair-line" d="M96 300 Q104 330 120 340" />
+      <path class="fine hair-line" d="M216 214 Q226 262 218 312" />
+      <path class="fine hair-line" d="M208 226 Q216 272 206 326" />
+      <path class="fine hair-line" d="M198 250 Q202 292 188 330" />
+      <path class="fine hair-line" d="M230 270 Q244 296 232 328" />
+      <path class="fine hair-line" d="M236 322 Q244 340 226 352" />
+      <path class="fine hair-line" d="M214 322 Q222 342 204 350" />
 
-    <!-- 😠 Cejas gruesas -->
-    <path [attr.d]="leftBrow" class="brow"/>
-    <path [attr.d]="rightBrow" class="brow"/>
+      <!-- Cara (sin cambios) -->
+      <path class="stroke paper" d="M121 168 C118 130 140 114 160 114 C180 114 202 130 199 168 C205 220 190 256 177 262 Q160 276 143 262 C130 256 115 220 121 168 Z" />
+      <!-- Línea de la mandíbula -->
+      <path class="faint" d="M126 226 Q134 252 152 262" />
+      <path class="faint" d="M194 226 Q186 252 168 262" />
+      <!-- Pómulos -->
+      <path class="faint" [attr.opacity]="f.nasoOpacity" d="M124 214 Q134 222 146 220" />
+      <path class="faint" [attr.opacity]="f.nasoOpacity" d="M196 214 Q186 222 174 220" />
 
-    <!-- 👀 Ojos -->
-    <path d="M130 180 Q140 170 150 180 Q140 190 130 180 Z" class="stroke"/>
-    <path d="M170 180 Q180 170 190 180 Q180 190 170 180 Z" class="stroke"/>
+      <!-- ═════ Rasgos (sin cambios) ═════ -->
 
-    <!-- Pupilas -->
-    <circle [attr.cx]="leftPupil.x" [attr.cy]="leftPupil.y" r="4" class="fill"/>
-    <circle [attr.cx]="rightPupil.x" [attr.cy]="rightPupil.y" r="4" class="fill"/>
+      <!-- Ojos y cejas -->
+      <g [attr.transform]="f.shiftEyes">
+        <!-- ojo izquierdo -->
+        <path class="stroke paper-soft" [attr.d]="f.leftEye.shape" />
+        <g clip-path="url(#av-clip-l)">
+          <circle [attr.cx]="f.leftEye.irisX" [attr.cy]="f.leftEye.irisY" r="6.4" class="stroke paper" />
+          <circle [attr.cx]="f.leftEye.irisX" [attr.cy]="f.leftEye.irisY" r="4.5" class="iris-rays" />
+          <circle [attr.cx]="f.leftEye.irisX" [attr.cy]="f.leftEye.irisY" r="2.7" class="ink" />
+          <circle [attr.cx]="f.leftEye.irisX - 2" [attr.cy]="f.leftEye.irisY - 2.2" r="1.3" class="paper-dot" />
+        </g>
+        <path class="heavy" [attr.d]="f.leftEye.upper" />
+        <path class="fine" [attr.d]="f.leftEye.lower" />
+        <path class="fine" [attr.opacity]="f.leftEye.creaseOpacity" [attr.d]="f.leftEye.crease" />
+        <path class="lash" [attr.d]="f.leftEye.lashes" />
+        <path class="faint" [attr.opacity]="f.leftEye.bagOpacity" [attr.d]="f.leftEye.bag" />
 
-    <!-- 👃 Nariz curva -->
-    <path 
-      [attr.d]="'M160 200 Q' + (150 + noseOffset) + ' 210 160 225'" 
-      class="stroke"
-    />
+        <!-- ojo derecho -->
+        <path class="stroke paper-soft" [attr.d]="f.rightEye.shape" />
+        <g clip-path="url(#av-clip-r)">
+          <circle [attr.cx]="f.rightEye.irisX" [attr.cy]="f.rightEye.irisY" r="6.4" class="stroke paper" />
+          <circle [attr.cx]="f.rightEye.irisX" [attr.cy]="f.rightEye.irisY" r="4.5" class="iris-rays" />
+          <circle [attr.cx]="f.rightEye.irisX" [attr.cy]="f.rightEye.irisY" r="2.7" class="ink" />
+          <circle [attr.cx]="f.rightEye.irisX - 2" [attr.cy]="f.rightEye.irisY - 2.2" r="1.3" class="paper-dot" />
+        </g>
+        <path class="heavy" [attr.d]="f.rightEye.upper" />
+        <path class="fine" [attr.d]="f.rightEye.lower" />
+        <path class="fine" [attr.opacity]="f.rightEye.creaseOpacity" [attr.d]="f.rightEye.crease" />
+        <path class="lash" [attr.d]="f.rightEye.lashes" />
+        <path class="faint" [attr.opacity]="f.rightEye.bagOpacity" [attr.d]="f.rightEye.bag" />
 
-    <!-- 👄 Boca -->
-    <path [attr.d]="mouthPath" class="stroke"/>
+        <!-- cejas -->
+        <path class="brow" [attr.d]="f.leftBrow.main" />
+        <path class="fine" [attr.d]="f.leftBrow.hairs" />
+        <path class="brow" [attr.d]="f.rightBrow.main" />
+        <path class="fine" [attr.d]="f.rightBrow.hairs" />
+      </g>
 
-    <!-- 💋 Lunar -->
-    <circle [attr.cx]="mole.x" [attr.cy]="mole.y" r="2" class="fill"/>
+      <!-- Nariz -->
+      <g [attr.transform]="f.shiftNose">
+        <path class="fine" d="M155 188 Q153 207 149 219" />
+        <path class="faint" d="M165 188 Q167 207 171 219" />
+        <path class="stroke" d="M150.5 222 Q147 228.5 152.5 230.5" />
+        <path class="stroke" d="M169.5 222 Q173 228.5 167.5 230.5" />
+        <path class="fine" d="M154 231.5 Q157 233 160 232.2 Q163 233 166 231.5" />
+        <path class="fine" d="M150.5 222 Q153.5 218.5 156 220.5" />
+        <path class="fine" d="M169.5 222 Q166.5 218.5 164 220.5" />
+        <path class="ink-line" d="M153 229.5 Q155.5 227.5 158 229.5" />
+        <path class="ink-line" d="M162 229.5 Q164.5 227.5 167 229.5" />
+        <path class="faint" d="M158 214 Q160 218 162 214" />
+      </g>
 
+      <!-- Surcos nasolabiales -->
+      <path class="faint" [attr.opacity]="f.nasoOpacity" d="M146 226 Q137 238 139 250" />
+      <path class="faint" [attr.opacity]="f.nasoOpacity" d="M174 226 Q183 238 181 250" />
+
+      <!-- Boca -->
+      <g [attr.transform]="f.shiftMouth">
+        <path class="faint" d="M156 235 Q157 239 156 242" />
+        <path class="faint" d="M164 235 Q163 239 164 242" />
+
+        <g [attr.opacity]="f.mouth.openOpacity">
+          <path class="stroke ink-fill" [attr.d]="f.mouth.openShape" />
+          <path class="stroke paper" [attr.d]="f.mouth.teethShape" />
+          <path class="faint" [attr.d]="f.mouth.teethLines" />
+        </g>
+
+        <path class="stroke" [attr.d]="f.mouth.upperLip" />
+        <path class="heavy" [attr.d]="f.mouth.seam" />
+        <path class="stroke" [attr.d]="f.mouth.lowerLip" />
+        <path class="faint" [attr.d]="f.mouth.lowerHighlight" />
+        <path class="faint" [attr.d]="f.mouth.chinCrease" />
+
+        <path class="fine" [attr.opacity]="f.mouth.creaseOpacity" [attr.d]="f.mouth.creaseL" />
+        <path class="fine" [attr.opacity]="f.mouth.creaseOpacity" [attr.d]="f.mouth.creaseR" />
+      </g>
+
+      <!-- Lunar -->
+      <circle [attr.cx]="f.mole.x" [attr.cy]="f.mole.y" r="1.7" class="ink" />
+
+      <!-- Flequillo / cabello superior (misma forma, solo se añade el relleno oscuro) -->
+      <path class="stroke hair" d="M116 204 Q82 122 160 98 Q238 122 204 204 Q208 170 190 148 Q176 133 156 133 Q132 135 122 160 Q116 182 116 204 Z" />
+      <!-- Hebras del cabello (se añade el trazo dorado) -->
+      <path class="fine hair-line" d="M156 133 Q130 140 122 176" />
+      <path class="fine hair-line" d="M152 114 Q122 126 114 172" />
+      <path class="fine hair-line" d="M158 104 Q108 116 104 166" />
+      <path class="fine hair-line" d="M156 120 Q136 126 128 150" />
+      <path class="fine hair-line" d="M158 133 Q182 134 196 164" />
+      <path class="fine hair-line" d="M164 114 Q200 124 206 170" />
+      <path class="fine hair-line" d="M162 104 Q212 116 214 170" />
+      <path class="fine hair-line" d="M164 120 Q184 126 194 148" />
+      <path class="faint hair-line" d="M138 104 Q118 114 112 138" />
+      <path class="faint hair-line" d="M182 104 Q202 114 208 138" />
+      <!-- Orejas (sin cambios) -->
+      <path class="stroke paper" d="M120 194 Q103 190 104 208 Q105 226 120 232" />
+      <path class="fine" d="M114 198 Q110 204 112 212 Q114 218 119 220" />
+      <path class="fine" d="M113 222 Q116 226 120 226" />
+      <path class="stroke paper" d="M200 194 Q217 190 216 208 Q215 226 200 232" />
+      <path class="fine" d="M206 198 Q210 204 208 212 Q206 218 201 220" />
+      <path class="fine" d="M207 222 Q204 226 200 226" />
+    </g>
   </svg>
 </div>
+
+<!--
+  ═══ CSS A AÑADIR al final de tu hoja de estilos (no toca tus clases actuales) ═══
+
+  .stroke.hair       { fill: #2b1d1a; }
+  .stroke.jacket     { fill: #17171a; }
+  .stroke.top-black  { fill: #0b0b0d; }
+  .speckle           { fill: url(#av-speckle); stroke: none; }
+
+  .hair-line,
+  .jacket-line       { stroke: #c9a24a; }   /* trazo dorado como el pin */
+-->
