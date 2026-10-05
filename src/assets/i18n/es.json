@@ -8,6 +8,20 @@
     "BTN_WORK": "Ver mis proyectos"
   },
   "ABOUT": {
+    "ROLE_LABEL": "Full-Stak Programadora",
+    "STAT1_VALUE": "Desde 2019",
+    "STAT1_LABEL": "en desarrollo",
+    "STAT2_VALUE": "7 empresas",
+    "STAT2_LABEL": "banca e industria",
+    "STAT3_VALUE": "Java · Python · .NET",
+    "STAT3_LABEL": "stack principal",
+    "CURRENT_LABEL": "Actualmente",
+    "CURRENT_TITLE": "Software Developer · Industrial Software",
+    "CURRENT_COMPANY": "CIALTA S.A.S.",
+    "CURRENT_DATE": "Jul 2026 – hoy",
+    "CURRENT_DESC": "Desarrollo de una aplicación para apoyar procesos de producción y etiquetado en una planta de alimentos.",
+    "CURRENT_NOTE": "Nuevo capítulo: del sector bancario al sector industrial",
+    "FILTER_ALL": "Todas",
     "TITLE": "Sobre mi trabajo",
     "DESCRIPTION": "Desarrolladora de software especializada en desarrollo Back-End, principalmente con Java, y experiencia trabajando con .NET y Python. Tengo una sólida base en bases de datos relacionales y arquitectura de aplicaciones empresariales. He trabajado en entornos Agile (Scrum), contribuyendo al análisis de requerimientos, diseño de soluciones y resolución de problemas técnicos. Me motiva el aprendizaje continuo y la adopción de nuevas tecnologías para construir sistemas eficientes, escalables y confiables.",
 

@@ -9,6 +9,20 @@
   }
   ,
   "ABOUT": {
+    "ROLE_LABEL": "Back-End developer",
+    "STAT1_VALUE": "Since 2019",
+    "STAT1_LABEL": "in development",
+    "STAT2_VALUE": "7 companies",
+    "STAT2_LABEL": "banking and industry",
+    "STAT3_VALUE": "Java · Python · .NET",
+    "STAT3_LABEL": "main stack",
+    "CURRENT_LABEL": "Currently",
+    "CURRENT_TITLE": "Software Developer · Industrial Software",
+    "CURRENT_COMPANY": "CIALTA S.A.S.",
+    "CURRENT_DATE": "Jul 2026 – present",
+    "CURRENT_DESC": "Development of an application that supports production and labeling processes in a food plant.",
+    "CURRENT_NOTE": "A new chapter: from banking to the industrial sector",
+    "FILTER_ALL": "All",
     "TITLE": "About My Work",
     "DESCRIPTION": "Software developer specialized in Back-End development, primarily with Java, and experience working with .NET and Python. I have a strong background in relational databases and enterprise application architecture. I’ve worked within Agile (Scrum) environments, contributing to requirement analysis, solution design, and technical problem-solving. I’m driven by continuous learning and the adoption of emerging technologies to build efficient, scalable, and reliable systems.",
 

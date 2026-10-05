@@ -1,107 +1,124 @@
 <section class="about-work">
+  <div class="glass">
 
-  <!-- ================= TITLE ================= -->
-  <div class="about-header">
-    <h2 class="section-title">{{ 'ABOUT.TITLE' | translate }}</h2>
+    <!-- decoración translúcida de fondo -->
+    <div class="blobs" aria-hidden="true"></div>
 
-    <p class="section-description">
-      {{ 'ABOUT.DESCRIPTION' | translate }}
-    </p>
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+
+        <span class="role-label">{{ 'ABOUT.ROLE_LABEL' | translate }}</span>
+        <h2 class="section-title">{{ 'ABOUT.TITLE' | translate }}</h2>
+
+        <p class="section-description">
+          {{ 'ABOUT.DESCRIPTION' | translate }}
+        </p>
+
+        <ul class="stats">
+          <li class="stat" *ngFor="let n of stats">
+            <strong>{{ 'ABOUT.STAT' + n + '_VALUE' | translate }}</strong>
+            <span>{{ 'ABOUT.STAT' + n + '_LABEL' | translate }}</span>
+          </li>
+        </ul>
+
+        <h5 class="side-title">{{ 'ABOUT.LANG_LEVEL' | translate }}</h5>
+        <div class="langs">
+          <div class="lang" *ngFor="let l of spoken">
+            <div class="lang-head">
+              <span>{{ l.name }}</span>
+              <span>{{ l.level }}</span>
+            </div>
+            <div class="bar"><div class="bar-fill" [style.width.%]="l.percent"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+
+    <!-- ================= CONTENT ================= -->
+    <div class="content">
+
+      <!-- ===== CURRENT JOB ===== -->
+      <div class="current-section">
+        <div class="current-label">
+          <span class="pulse-dot"></span>
+          {{ 'ABOUT.CURRENT_LABEL' | translate }}
+        </div>
+
+        <article class="current-card">
+          <div class="current-top">
+            <div>
+              <h4>{{ 'ABOUT.CURRENT_TITLE' | translate }}</h4>
+              <span class="company">{{ 'ABOUT.CURRENT_COMPANY' | translate }}</span>
+            </div>
+            <span class="date-badge">{{ 'ABOUT.CURRENT_DATE' | translate }}</span>
+          </div>
+
+          <p>{{ 'ABOUT.CURRENT_DESC' | translate }}</p>
+
+          <div class="chips">
+            <span class="chip chip-light" *ngFor="let tag of currentTags">{{ tag }}</span>
+          </div>
+
+          <small class="current-note">{{ 'ABOUT.CURRENT_NOTE' | translate }}</small>
+        </article>
+      </div>
+
+
+      <!-- ===== WORK EXPERIENCE ===== -->
+      <div class="experience-section">
+        <h3 class="sub-title">{{ 'ABOUT.EXPERIENCE_TITLE' | translate }}</h3>
+
+        <!--
+          1 SII Group · 2 Sistran · 3 SumiTemp
+          4 Acrecer · 5 Cognicase · 6 Tecnoevolución
+        -->
+        <div class="jobs-grid">
+          <article class="job" *ngFor="let n of jobs; let i = index">
+            <span class="job-index">0{{ i + 1 }}</span>
+            <span class="date">{{ 'ABOUT.JOB' + n + '_DATE' | translate }}</span>
+            <h4>{{ 'ABOUT.JOB' + n + '_TITLE' | translate }}</h4>
+            <span class="company">{{ 'ABOUT.JOB' + n + '_COMPANY' | translate }}</span>
+            <p>{{ 'ABOUT.JOB' + n + '_DESC' | translate }}</p>
+          </article>
+        </div>
+      </div>
+
+
+      <!-- ===== TECHNICAL SKILLS ===== -->
+      <div class="skills-section">
+        <h3 class="sub-title">{{ 'ABOUT.SKILLS_TITLE' | translate }}</h3>
+
+        <div class="filters">
+          <button type="button"
+                  class="filter-btn"
+                  [class.active]="selected === 'all'"
+                  [attr.aria-pressed]="selected === 'all'"
+                  (click)="select('all')">
+            {{ 'ABOUT.FILTER_ALL' | translate }}
+          </button>
+          <button type="button"
+                  class="filter-btn"
+                  *ngFor="let g of skillGroups"
+                  [class.active]="selected === g.id"
+                  [attr.aria-pressed]="selected === g.id"
+                  (click)="select(g.id)">
+            {{ g.titleKey | translate }}
+          </button>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group" *ngFor="let g of visibleGroups">
+            <h5>{{ g.titleKey | translate }}</h5>
+            <div class="chips">
+              <span class="chip" *ngFor="let item of g.items">{{ item }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-
-
-  <!-- ================= WORK EXPERIENCE ================= -->
-  <div class="experience-section">
-    <h3 class="sub-title">{{ 'ABOUT.EXPERIENCE_TITLE' | translate }}</h3>
-
-    <!-- SII Group -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB1_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB1_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB1_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB1_DESC' | translate }}</p>
-    </div>
-
-    <!-- Sistran -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB2_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB2_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB2_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB2_DESC' | translate }}</p>
-    </div>
-
-    <!-- SumiTemp -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB3_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB3_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB3_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB3_DESC' | translate }}</p>
-    </div>
-
-    <!-- Acrecer -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB4_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB4_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB4_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB4_DESC' | translate }}</p>
-    </div>
-
-    <!-- Cognicase -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB5_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB5_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB5_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB5_DESC' | translate }}</p>
-    </div>
-
-    <!-- Tecnoevolución -->
-    <div class="job">
-      <h4>{{ 'ABOUT.JOB6_TITLE' | translate }}</h4>
-      <span class="company">{{ 'ABOUT.JOB6_COMPANY' | translate }}</span>
-      <span class="date">{{ 'ABOUT.JOB6_DATE' | translate }}</span>
-      <p>{{ 'ABOUT.JOB6_DESC' | translate }}</p>
-    </div>
-
-  </div>
-
-
-  <!-- ================= TECHNICAL SKILLS ================= -->
-  <div class="skills-section">
-    <h3 class="sub-title">{{ 'ABOUT.SKILLS_TITLE' | translate }}</h3>
-
-    <div class="skills-grid">
-
-      <div>
-        <h5>{{ 'ABOUT.LANGUAGES' | translate }}</h5>
-        <p>Java (8–17), Python, C#, .NET, TypeScript, JavaScript, HTML, CSS, JSF, J2EE, Android</p>
-      </div>
-
-      <div>
-        <h5>{{ 'ABOUT.DATABASES' | translate }}</h5>
-        <p>MySQL, SQL Server, MongoDB, AWS S3</p>
-      </div>
-
-      <div>
-        <h5>{{ 'ABOUT.FRAMEWORKS' | translate }}</h5>
-        <p>Spring Boot, MVC, Hibernate, Microservices, REST APIs, SOLID Principles, SDLC</p>
-      </div>
-
-      <div>
-        <h5>{{ 'ABOUT.TOOLS' | translate }}</h5>
-        <p>Jira, Git, Bitbucket, Azure DevOps, Maven, Jenkins, Selenium, Postman, Power BI</p>
-      </div>
-
-      <div>
-        <h5>{{ 'ABOUT.METHODS' | translate }}</h5>
-        <p>Scrum, Agile, OOP, Design Patterns</p>
-      </div>
-
-      <div>
-        <h5>{{ 'ABOUT.LANG_LEVEL' | translate }}</h5>
-        <p>English (B1), German (A1)</p>
-      </div>
-
-    </div>
-  </div>
-
 </section>
